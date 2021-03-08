@@ -4,8 +4,9 @@ route: /Alert
 menu: 组件
 ---
 
-import { Playground, Props } from 'docz';
+import Box from 'mc-ui/docs-comps/Box';
 import Alert from 'mc-ui/lib/Alert';
+import AlertCode from '!raw-loader!mc-ui/lib/Alert';
 import 'mc-ui/lib/Alert/style/index.less';
 
 # Alert 警告提示
@@ -16,9 +17,9 @@ import 'mc-ui/lib/Alert/style/index.less';
 
 ### 基本用法
 
-<Playground>
+<Box code={AlertCode} title="基本用法" desc="使用kind控制Alert类型">
   <Alert kind="warning">这是一条警告提示</Alert>
-</Playground>
+</Box>
 
 ## API
 
