@@ -1,67 +1,22 @@
-# Docz example with webpack aliases
+<p align="center">
+  <img alt="RATurbo-admin" height="64" src="./assets/favicon.ico">
+</p>
 
-## Using `create-docz-app`
+<h1 align="center">RATurbo-components</h1>
 
-```sh
-npx create-docz-app docz-app-webpack-alias --example webpack-alias
-# or
-yarn create docz-app docz-app-webpack-alias --example webpack-alias
-```
+## dependencies
 
-## Download manually
+- [react](https://facebook.github.io/react/)
+- [less](http://lesscss.cn/)(<span style="color: rgb(243,121,52);">css preprocess</span>)
+## function modules
 
-```sh
-curl https://codeload.github.com/doczjs/docz/tar.gz/master | tar -xz --strip=2 docz-master/examples/webpack-alias
-mv webpack-alias docz-webpack-alias-example
-cd docz-webpack-alias-example
-```
+## how to start
 
-## Notes
 
-To configure the webpack config we add a `gatsby-node.js` file and export `onCreateWebpackConfig`. More info here : https://www.gatsbyjs.org/docs/add-custom-webpack-config/
+## support environment
 
-For this example, files inside `./src/` can be accessed with an absolute path. For example instead of doing `import A from './src/components/Alert` you can do `import A from 'components/Alert'`.
+modern browser.
 
-Another alias is set in place to map files in `./src/components/` to `@`. For example instead of doing `import A from './src/components/Alert` you can do `import A from '@/Alert'`.
-
-```js
-// gatsby-node.js
-const path = require('path')
-
-exports.onCreateWebpackConfig = args => {
-  args.actions.setWebpackConfig({
-    resolve: {
-      // Note the '..' in the path because the docz gatsby project lives in the `.docz` directory
-      modules: [path.resolve(__dirname, '../src'), 'node_modules'],
-      alias: {
-        '@': path.resolve(__dirname, '../src/components/'),
-      },
-    },
-  })
-}
-
-```
-
-## Setup
-
-```sh
-yarn # npm i
-```
-
-## Run
-
-```sh
-yarn dev # npm run dev
-```
-
-## Build
-
-```sh
-yarn build # npm run build
-```
-
-## Serve built app
-
-```sh
-yarn serve # npm run serve
-```
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera |
+| --------- | --------- | --------- | --------- | --------- | 
+|IE11, Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions

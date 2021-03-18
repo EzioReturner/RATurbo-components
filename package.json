@@ -1,7 +1,6 @@
 {
-  "name": "mcui",
-  "private": true,
-  "version": "0.0.1",
+  "name": "RATurbo-components",
+  "version": "0.1.1",
   "license": "MIT",
   "files": [
     "lib",
@@ -9,6 +8,11 @@
   ],
   "module": "esm/index.js",
   "typings": "lib/index.d.ts",
+  "keywords": [
+    "react",
+    "UI",
+    "component"
+  ],
   "scripts": {
     "dev": "docz dev",
     "clean": "rimraf lib esm dist",
