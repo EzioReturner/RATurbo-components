@@ -1,11 +1,13 @@
 {
   "name": "RATurbo-components",
-  "version": "0.1.1",
+  "version": "0.1.2",
+  "author": "ezioreturner",
   "license": "MIT",
   "files": [
     "lib",
     "components"
   ],
+  "description": "render solution",
   "module": "esm/index.js",
   "typings": "lib/index.d.ts",
   "keywords": [
@@ -13,6 +15,14 @@
     "UI",
     "component"
   ],
+  "engines": {
+    "node": ">= 8.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/EzioReturner/RATurbo-components"
+  },
   "scripts": {
     "dev": "docz dev",
     "clean": "rimraf lib esm dist",
