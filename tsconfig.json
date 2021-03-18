@@ -19,14 +19,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@styles/*": ["./src/styles/*"],
-      "mc-ui/lib/*": ["./src/components/*"]
+      "@/*": ["./*"],
+      "mc-ui/lib/*": ["./components/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "typeRoots": ["./node_modules/@types", "./src/models/*"]
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx","./components/**/*.ts", "./components/**/*.tsx"],
   "exclude": ["node_modules", "tests/*", "src/docs-comps/Box", "site"]
 }

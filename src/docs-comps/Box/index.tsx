@@ -57,7 +57,7 @@ export const Box: React.FC<Props> = ({ code, title, desc, children }) => {
           readOnly
           value={code}
           onValueChange={() => {}}
-          highlight={code => highlight(code, languages.jsx)}
+          highlight={code => highlight(code, languages.jsx, 'javascript')}
           padding={10}
           className="container__editor"
           style={{
