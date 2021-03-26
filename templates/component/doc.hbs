@@ -1,0 +1,31 @@
+---
+name: {{pascalCase name}} {{CN}}
+route: /components/{{pascalCase name}}
+menu: 组件
+---
+
+import CodeBox from '../../doc-comps/tc-box';
+
+import BasicDemo from 'turbo-components/lib/{{pascalCase name}}/__demo__/basic';
+import BasicDemoCode from '!raw-loader!turbo-components/lib/{{pascalCase name}}/__demo__/basic';
+
+# {{pascalCase name}} {{CN}}
+
+{{description}}
+<br/>
+
+## 如何使用
+
+<br/>
+
+## 代码演示
+
+<CodeBox code={BasicDemoCode} title="基本使用" description="">
+  <BasicDemo></BasicDemo>
+</CodeBox>
+
+
+## API
+
+| 属性 | 说明 | 类型 | 是否必填 | 默认值 |
+| --- | ---- | --- | ------ | ------ |

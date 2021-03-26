@@ -1,34 +1,19 @@
 module.exports = {
-  root: true,
-  env: {
-    node: true
-  },
-  parser: '@typescript-eslint/parser',
-  extends: ['prettier/@typescript-eslint', 'plugin:prettier/recommended'],
-  settings: {
-    react: {
-      pragma: 'React',
-      version: 'detect'
-    }
-  },
-  plugins: ['react-hooks'],
+  extends: [require.resolve('@umijs/fabric/dist/eslint')],
   rules: {
-    'no-console': 0,
-    'prettier/prettier': [
-      'error',
-      {
-        trailingComma: 'none',
-        singleQuote: true
-      }
-    ],
-    'react-hooks/rules-of-hooks': 'warn',
-    'react-hooks/exhaustive-deps': 'warn'
+    'react/require-default-props': 0,
+    'no-plusplus': 0,
+    'no-unused-expressions': 0,
+    'no-loop-func': 0,
+    'no-underscore-dangle': 0,
+    'no-restricted-globals': 0,
+    '@typescript-eslint/no-unused-vars': 1,
+    'react/no-array-index-key': 1,
+    '@typescript-eslint/camelcase': 0,
+    'no-nested-ternary': 1,
+    'import/no-unresolved': 0,
+    'prefer-rest-params': 1,
+    'no-lone-blocks': 1,
+    'import/no-extraneous-dependencies': 1
   },
-  parserOptions: {
-    ecmaVersion: 2019,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true
-    }
-  }
 };

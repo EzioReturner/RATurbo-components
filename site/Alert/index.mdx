@@ -4,22 +4,18 @@ route: /Alert
 menu: 组件
 ---
 
-import Box from 'mc-ui/docs-comps/Box';
-import Alert from 'mc-ui/lib/Alert';
-import AlertCode from '!raw-loader!mc-ui/lib/Alert';
-import 'mc-ui/lib/Alert/style/index.less';
+import { Box } from '../../doc-comps';
+import BasicDemo from 'turbo-components/lib/Alert/__demo__/1-demo-basic';
+import BasicDemoCode from '!raw-loader!turbo-components/lib/Alert/__demo__/1-demo-basic.tsx';
 
 # Alert 警告提示
-
 警告提示，展现需要关注的信息。
 
 ## 代码演示
-
-### 基本用法
-
-<Box code={AlertCode} title="基本用法" desc="使用kind控制Alert类型">
-  <Alert kind="warning">这是一条警告提示</Alert>
+<Box code={BasicDemoCode} title="基本用法" description="最简单的用法，适用于简短的警告提示。">
+  <BasicDemo />
 </Box>
+
 
 ## API
 

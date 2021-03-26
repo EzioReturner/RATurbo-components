@@ -1,11 +1,15 @@
 module.exports = {
-  presets: ['@babel/preset-env', '@babel/typescript', '@babel/react'],
-  plugins: ['@babel/plugin-transform-runtime', '@babel/proposal-class-properties'],
+  presets: ['@babel/env', '@babel/typescript', '@babel/react'],
+  plugins: [
+    '@babel/plugin-proposal-optional-chaining',
+    '@babel/plugin-transform-runtime',
+    '@babel/proposal-class-properties'
+  ],
   env: {
     esm: {
       presets: [
         [
-          '@babel/preset-env',
+          '@babel/env',
           {
             modules: false,
           },

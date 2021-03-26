@@ -1,0 +1,34 @@
+---
+name: Empty 空状态
+route: /components/Empty
+menu: 组件
+---
+
+import Box from '../../doc-comps/box';
+import BasicDemo from 'turbo-components/lib/Empty/__demo__/basic';
+import BasicDemoCode from '!raw-loader!turbo-components/lib/Empty/__demo__/basic';
+
+# Empty 空状态
+
+空状态时的展示占位图。
+
+## 如何使用
+
+- 当目前没有数据时，用于显式的用户提示。
+
+- 初始化场景时的引导创建流程。
+
+## 代码演示
+
+<Box code={BasicDemoCode} title="基本用法" description="简单的展示。">
+  <BasicDemo></BasicDemo>
+</Box>
+
+
+## API
+
+| 属性 | 说明 | 类型 | 是否必填 | 默认值 |
+| --- | ---- | --- | ------ | ------ |
+| propStyle | 传入样式 | React.CSSProperties | 否 | - |
+| image | 替换显示图片 | React.ReactNode | 否 | - |
+| description | 自定义描述内容 | React.ReactNode | 否 | - |

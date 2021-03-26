@@ -1,0 +1,118 @@
+.doc-box {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 16px;
+  border: 1px solid #f0f0f0;
+  border-radius: 2px;
+  transition: all .2s;
+
+  &.expand {
+    .doc-box-meta {
+      border-bottom: 1px dashed #f0f0f0;
+    }
+  }
+}
+
+.doc-box-demo {
+  padding: 42px 24px 50px;
+  color: rgba(0,0,0,.85);
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.doc-box-meta {
+  position: relative;
+  width: 100%;
+  font-size: 14px;
+  border-radius: 0 0 2px 2px;
+  border-radius: 0;
+  transition: background-color .4s;
+}
+
+.doc-box-title {
+  position: absolute;
+  top: -14px;
+  margin-left: 16px;
+  padding: 1px 8px;
+  color: #777;
+  background: #fff;
+  border-radius: 2px 2px 0 0;
+  transition: background-color .4s;
+
+  .title-text {
+    color: rgba(0,0,0,.85);
+    font-weight: 500;
+    font-size: 14px;
+    background: #fff;
+  }
+
+  .title-icon {
+    position: absolute;
+    top: 4px;
+    right: -16px;
+    display: inline-block;
+    margin-left: 8px;
+    padding-right: 6px;
+    color: rgba(0,0,0,.85);
+    font-size: 12px;
+    text-decoration: none;
+    background: inherit;
+    transform: scale(.9);
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.doc-box-description {
+  padding: 18px 24px 12px;
+}
+
+.doc-box-actions {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
+  border-top: 1px dashed #f0f0f0;
+  opacity: .7;
+  transition: opacity .3s;
+
+  .actions-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 16px;
+    color: rgba(0,0,0,.45);
+    cursor: pointer;
+    transition: all .24s;
+  }
+}
+
+.highlight-wrapper {
+  display: none;
+
+  &.highlight-wrapper-expand {
+    display: block;
+  }
+
+  pre {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  pre code {
+    display: block;
+    padding: 16px 32px;
+    color: rgba(0,0,0,.85);
+    font-size: 14px;
+    font-family: Lucida Console,Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
+    line-height: 2;
+    white-space: pre;
+    background: #fff;
+  }
+}
