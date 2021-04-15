@@ -14,6 +14,7 @@ module.exports = {
     'import/no-unresolved': 0,
     'prefer-rest-params': 1,
     'no-lone-blocks': 1,
-    'import/no-extraneous-dependencies': 1
+    'import/no-extraneous-dependencies': 1,
+    'no-continue': 0
   },
 };
