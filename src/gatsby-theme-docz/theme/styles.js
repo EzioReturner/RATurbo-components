@@ -133,7 +133,7 @@ const styles = {
   hr: {
     border: 0,
     borderBottom: t => `1px solid ${t.colors.border}`,
-  },
+  }
 };
 
 export default styles;

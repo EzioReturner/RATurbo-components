@@ -18,7 +18,7 @@ export const overlay = ({ open }) => ({
   background: 'rgba(0,0,0,0.6)',
   transition: 'all .2s ease-out',
   visibility: open ? 'visible' : 'hidden',
-  opacity: open ? 1 : 0,
+  opacity: open ? 1 : 0
 })
 
 export const wrapper = ({ open }) => ({
@@ -30,10 +30,12 @@ export const wrapper = ({ open }) => ({
   zIndex: 1,
   minWidth: 0,
   maxHeight: '100vh',
-  borderRight: t => `1px solid ${t.colors.border}`,
+  // borderRight: t => `1px solid ${t.colors.border}`,
+  borderRight: '1px solid #f0f0f0',
   overflow: 'auto',
   WebkitOverflowScrolling: 'touch',
   bg: 'sidebar.bg',
+  padding: 0,
 
   [media.tablet]: {
     zIndex: 9999,

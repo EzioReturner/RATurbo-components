@@ -35,7 +35,10 @@ export const NavLink = React.forwardRef(({ item, ...props }, ref) => {
   const currentHash = getCurrentHash();
   return (
     <React.Fragment>
-      <Link {...props} to={to} sx={styles.link} activeClassName="active" ref={ref} />
+      <Link {...props} to={to} sx={styles.link} activeClassName="active" ref={ref}>
+        <span>{item.name}</span>
+        <span className="chinese">{item.cnName}</span>
+      </Link>
       {showHeadings &&
         headings.map(heading => (
           <Link
