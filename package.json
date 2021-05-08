@@ -1,6 +1,6 @@
 {
   "name": "turbo-components",
-  "version": "0.1.1-beta1",
+  "version": "0.1.2-beta",
   "author": "data frontend",
   "description": "A React UI Library.",
   "license": "MIT",
@@ -35,7 +35,6 @@
     "pub": "npm run clean && npm run build && npm publish",
     "build:types": "tsc -p tsconfig.build.json && cpr lib esm",
     "build": "npm run clean && npm run build:types && gulp",
-    "publish:doc": "now --prod",
     "release": "ts-node ./scripts/release.ts",
     "commit": "git-cz",
     "test": "jest",
@@ -45,8 +44,8 @@
     "new": "plop --plopfile ./scripts/plopfile.ts",
     "postnew": "prettier --write components/**/*{ts,tsx} --loglevel silent",
     "lint-doc-comps": "prettier --write doc-comps/**/*.{tsx,ts} && eslint doc-comps/**/*.{tsx,ts} --fix && stylelint --syntax less doc-comps/**/*.less --fix",
-    "lint-components": "prettier --write components/**/*{ts,tsx} && eslint components/**/*.{tsx,ts} --fix && stylelint --syntax less doc-comps/**/*.less --fix",
-    "lint-fix": "lint-doc-comps && lint-components"
+    "lint-components": "prettier --write components/**/*{ts,tsx} && eslint components/**/*.{tsx,ts} --fix && stylelint --syntax less components/**/*.less --fix",
+    "lint-fix": "yarn lint-doc-comps && yarn lint-components"
   },
   "peerDependencies": {
     "react": ">=16.12.0",
@@ -68,6 +67,7 @@
     "@testing-library/react": "^9.4.0",
     "@types/classnames": "^2.2.11",
     "@types/jest": "^24.0.25",
+    "@types/lodash": "^4.14.168",
     "@types/react-highlight": "^0.12.2",
     "@types/styled-components": "^5.1.9",
     "@types/testing-library__react": "^9.1.2",
@@ -101,7 +101,7 @@
     "through2": "^3.0.1",
     "ts-jest": "^24.2.0",
     "ts-node": "^8.10.1",
-    "typescript": "^4.2.3"
+    "typescript": "^3.7.3"
   },
   "lint-staged": {
     "components/**/*.ts?(x)": [
