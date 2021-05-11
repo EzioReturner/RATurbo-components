@@ -12,9 +12,9 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "paths": {
-      "turbo-components": ["./components/index.ts"],
-      "turbo-components/esm/*": ["./components/*"],
-      "turbo-components/lib/*": ["./components/*"]
+      "raturbo-components": ["./components/index.ts"],
+      "raturbo-components/esm/*": ["./components/*"],
+      "raturbo-components/lib/*": ["./components/*"]
     }
   },
   "include": ["./components", "./doc-comps", "global.d.ts"],

@@ -22,6 +22,8 @@ export const Sidebar = React.forwardRef((props, ref) => {
     }
   }, []);
 
+  console.log('menus',menus);
+
   const infoMenus = menus.slice(0, menus.length - 1).sort((a,b)=>a.index-b.index);
   const componentMenus = menus[menus.length - 1];
 

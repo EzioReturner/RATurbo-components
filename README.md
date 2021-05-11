@@ -53,7 +53,7 @@ clone locally:
 
 ```bash
 $ git clone https://github.com/EzioReturner/RATurbo-components
-$ cd turbo-components
+$ cd raturbo-components
 $ yarn install
 $ yarn dev
 ```

@@ -53,8 +53,8 @@ const styles = {
     paddingLeft: '10px',
     borderLeft: t => `4px solid #f0f0f0`,
     color: 'blockquote.color',
-    fontStyle: 'ui',
     '> p': {
+      lineHeight: 2,
       m: 0,
       fontSize: '12px',
       color: 'rgba(0,0,0,.45)'

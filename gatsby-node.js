@@ -5,9 +5,9 @@ exports.onCreateWebpackConfig = args => {
     resolve: {
       modules: [path.resolve(__dirname, '../src'), 'node_modules'],
       alias: {
-        'turbo-components/lib': path.resolve(__dirname, '../components/'),
-        'turbo-components/esm': path.resolve(__dirname, '../components/'),
-        'turbo-components': path.resolve(__dirname, '../components/'),
+        'raturbo-components/lib': path.resolve(__dirname, '../components/'),
+        'raturbo-components/esm': path.resolve(__dirname, '../components/'),
+        'raturbo-components': path.resolve(__dirname, '../components/'),
       },
     },
   });
