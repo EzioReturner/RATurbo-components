@@ -41,22 +41,23 @@ const styles = {
     listStyleType: 'circle'
   },
   li: {
+    fontSize: '14px',
     marginBottom: 0,
     '> p': {
       margin: '0.2em 0'
     }
   },
   blockquote: {
-    my: 4,
+    my: '12px',
     mx: 0,
-    py: 3,
-    px: 4,
-    bg: 'blockquote.bg',
-    borderLeft: t => `5px solid ${t.colors.blockquote.border}`,
+    paddingLeft: '10px',
+    borderLeft: t => `4px solid #f0f0f0`,
     color: 'blockquote.color',
     fontStyle: 'ui',
     '> p': {
       m: 0,
+      fontSize: '12px',
+      color: 'rgba(0,0,0,.45)'
     },
   },
   code: {
@@ -71,7 +72,7 @@ const styles = {
     mx: 1,
   },
   pre: {
-    my: 4,
+    my: 3,
     p: 3,
     variant: 'prism',
     textAlign: 'left',

@@ -22,9 +22,22 @@ export const Sidebar = React.forwardRef((props, ref) => {
     }
   }, []);
 
-
-  const infoMenus = menus.slice(0, menus.length - 1);
+  const infoMenus = menus.slice(0, menus.length - 1).sort((a,b)=>a.index-b.index);
   const componentMenus = menus[menus.length - 1];
+
+  const LAYOUT_GROUP = ['Layout', 'Header', 'Sider'];
+
+  const { operation, layout } = componentMenus.menu.reduce((total, component) => {
+    if (LAYOUT_GROUP.includes(component.name)) {
+      component.name ==='Layout' && total.layout.push(component)
+    } else {
+      total.operation.push(component)
+    }
+    return total;
+  }, {
+      operation: [],
+      layout: []
+  });
 
   const renderMenu = menus => {
     return menus && menus.map(menu => {
@@ -54,8 +67,12 @@ export const Sidebar = React.forwardRef((props, ref) => {
         <div className="sidebar-title">
           {renderMenu(infoMenus)}
         </div>
+        <div className="sub-title">业务</div>
         <div className="sidebar-divide"></div>
-        {Array.isArray(componentMenus.menu) ? renderMenu(componentMenus.menu) : renderMenu([componentMenus]) }
+        {renderMenu(operation)}
+        <div className="sub-title">布局</div>
+        <div className="sidebar-divide"></div>
+        {renderMenu(layout)}
       </Box>
     </>
   );
