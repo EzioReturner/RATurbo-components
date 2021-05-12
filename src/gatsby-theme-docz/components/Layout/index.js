@@ -23,25 +23,49 @@ export const Layout = ({ children }) => {
   if (current.fullpage) return children;
 
   const Wrapper = <div>
-    {current.title && <div>
-      <h1 className="markdown-h1">{current.title}</h1>
-      <blockquote sx={styles.blockquote}>
-        <p>贡献者：</p>
-        <Users />
-        <p>{current.contributors}</p>
-      </blockquote>
-    </div>}
+    {
+      current.title && <div>
+        <h1 className="markdown-h1">{current.title}</h1>
+        <blockquote sx={styles.blockquote}>
+          <p>贡献者：</p>
+          <Users />
+          <p>{current.contributors}</p>
+        </blockquote>
+      </div>
+    }
     {children}
   </div>
+
+  const groupMenus = menus.reduce((total, menu) => {
+    if (menu.name === 'docs') {
+      total.docsMenus = menu;
+    } else if (menu.name === 'components') {
+      total.componentMenus = menu;
+    } else if (menu.name === 'layout') {
+      total.layoutMenus = menu;
+    } else if (menu.name === 'index') {
+      total.indexMenus = menu
+    } else if (menu.name === 'logs') {
+      total.logsMenus = menu
+    }
+
+    return total;
+  }, {
+      layoutMenus: {},
+      componentMenus: {},
+      docsMenus: {},
+      indexMenus: {},
+      logsMenus: {}
+  });
 
   return (
     <BaseLayout sx={{ '& > div': { flex: '1 1 auto' } }} data-testid="layout">
       <Global styles={global} />
       <Main sx={styles.main}>
-        <Header setQuery={setQuery} query={query} />
+        <Header setQuery={setQuery} query={query} menus={groupMenus} />
         <div sx={styles.wrapper}>
           <Sidebar
-            menus={menus}
+            menus={groupMenus}
             ref={nav}
             open={open}
             onFocus={() => setOpen(true)}
