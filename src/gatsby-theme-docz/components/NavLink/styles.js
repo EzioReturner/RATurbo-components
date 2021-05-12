@@ -17,6 +17,10 @@ export const link = {
   textDecoration: 'none',
   fontSize: 2,
   position: 'relative',
+  transition: 'color 0.3s',
+  '&:hover': {
+    color: '#1890ff',
+  },
   '&.active': {
     color: '#1890ff',
     backgroundColor: '#e6f7ff'

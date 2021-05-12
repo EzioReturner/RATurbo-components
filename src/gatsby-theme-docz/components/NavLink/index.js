@@ -20,7 +20,7 @@ const getCurrentHash = () => {
   return window.location ? decodeURI(window.location.hash) : '';
 };
 
-export const NavLink = React.forwardRef(({ item, ...props }, ref) => {
+export const NavLink = React.forwardRef(({ item, children, ...props }, ref) => {
   const docs = useDocs();
   const current = useCurrentDoc();
 
@@ -36,8 +36,13 @@ export const NavLink = React.forwardRef(({ item, ...props }, ref) => {
   return (
     <React.Fragment>
       <Link {...props} to={to} sx={styles.link} activeClassName="active" ref={ref}>
-        <span>{item.name}</span>
-        <span className="chinese">{item.cnName}</span>
+        {
+          children ||
+          <React.Fragment>
+            <span>{item.name}</span>
+            <span className="chinese">{item.cnName}</span>
+          </React.Fragment>
+        }
       </Link>
       {showHeadings &&
         headings.map(heading => (
