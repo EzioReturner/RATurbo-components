@@ -22,24 +22,7 @@ export const Sidebar = React.forwardRef((props, ref) => {
     }
   }, []);
 
-  console.log('menus',menus);
-
-  const infoMenus = menus.slice(0, menus.length - 1).sort((a,b)=>a.index-b.index);
-  const componentMenus = menus[menus.length - 1];
-
-  const LAYOUT_GROUP = ['Layout', 'Header', 'Sider'];
-
-  const { operation, layout } = componentMenus.menu.reduce((total, component) => {
-    if (LAYOUT_GROUP.includes(component.name)) {
-      component.name ==='Layout' && total.layout.push(component)
-    } else {
-      total.operation.push(component)
-    }
-    return total;
-  }, {
-      operation: [],
-      layout: []
-  });
+  const { indexMenus, componentMenus, layoutMenus, docsMenus } = menus
 
   const renderMenu = menus => {
     return menus && menus.map(menu => {
@@ -47,15 +30,11 @@ export const Sidebar = React.forwardRef((props, ref) => {
       if (!menu.route) return <NavGroup key={menu.id} item={menu} sidebarRef={ref} />;
       if (menu.route === currentDoc.route) {
         return (
-          <NavLink key={menu.id} item={menu} ref={currentDocRef}>
-            {menu.name}
-          </NavLink>
+          <NavLink key={menu.id} item={menu} ref={currentDocRef} />
         );
       }
       return (
-        <NavLink key={menu.id} item={menu}>
-          {menu.name}
-        </NavLink>
+        <NavLink key={menu.id} item={menu} />
       );
     })
   }
@@ -66,15 +45,26 @@ export const Sidebar = React.forwardRef((props, ref) => {
         {props.open && <Global styles={styles.global} />}
       </Box>
       <Box ref={ref} sx={styles.wrapper(props)} data-testid="sidebar">
-        <div className="sidebar-title">
-          {renderMenu(infoMenus)}
-        </div>
-        <div className="sub-title">业务</div>
-        <div className="sidebar-divide"></div>
-        {renderMenu(operation)}
-        <div className="sub-title">布局</div>
-        <div className="sidebar-divide"></div>
-        {renderMenu(layout)}
+        {
+          ['components', 'layout', 'index'].includes(currentDoc.menu) &&
+          <>
+            <div className="sidebar-title">
+            {renderMenu(indexMenus?.menu)}
+            </div>
+            <div className="sub-title">业务</div>
+            <div className="sidebar-divide"></div>
+            {renderMenu(componentMenus?.menu)}
+            <div className="sub-title">布局</div>
+            <div className="sidebar-divide"></div>
+            {renderMenu(layoutMenus?.menu)}
+          </>
+        }
+        {
+          currentDoc.menu === 'docs' && 
+          <div>
+            {renderMenu(docsMenus?.menu.sort((a,b)=>(a.index-b.index)))}
+          </div>
+        }
       </Box>
     </>
   );
