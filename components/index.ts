@@ -1,2 +1,2 @@
-export { default as Alert } from './Alert';
-export { default as Pagination } from './Pagination';
+export { default as Pagination } from './pagination';
+export { default as Empty } from './empty';

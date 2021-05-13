@@ -2,8 +2,6 @@
 
 <h1 align="center">RATurbo-components</h1>
 
-<h1 align="center">RATurbo-components</h1>
-
 ## ✨ Features
 
 - 🌈 Enterprise-class UI designed for web applications.
