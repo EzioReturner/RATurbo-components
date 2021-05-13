@@ -34,7 +34,7 @@ const Header = props => {
           </NavLink>
         </p>
         <p className="header-link">
-          <NavLink key={compMenu.id} item={compMenu}  getProps={()=>isActive(['components', 'index'])}>
+          <NavLink key={compMenu.id} item={compMenu}  getProps={()=>isActive(['components', 'index', 'layout'])}>
             组件
           </NavLink>
         </p>
