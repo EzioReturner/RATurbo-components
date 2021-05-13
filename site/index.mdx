@@ -1,20 +1,67 @@
 ---
 name: Getting Started
 route: /
+menu: 'index'
 ---
 
-# Getting Started
+# RATurbo-components
 
-Design systems enable teams to build better products faster by making design reusable—reusability makes scale possible. This is the heart and primary value of design systems. A design system is a collection of reusable components, guided by clear standards, that can be assembled together to build any number of applications.
+`RATurbo-components` 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。
 
-Regardless of the technologies and tools behind them, a successful design system follows these guiding principles:
+## 特性
 
-- **It’s consistent**. The way components are built and managed follows a predictable pattern.
-- **It’s self-contained**. Your design system is treated as a standalone dependency.
-- **It’s reusable**. You’ve built components so they can be reused in many contexts.
-- **It’s accessible**. Applications built with your design system are usable by as many people as possible, no matter how they access the web.
-- **It’s robust**. No matter the product or platform to which your design system is applied, it should perform with grace and minimal bugs.
+- 🌈 提炼自企业级中后台产品的交互语言和视觉风格。
 
-## Consistency
+- 📦 开箱即用的高质量 React 组件。
 
-Your first, most important task when starting out is to define the rules of your system, document them, and ensure that everyone follows them. When you have clearly documented code standards and best practices in place, designers and developers from across your organization can easily use and, more importantly, contribute to your design system.
+- 🛡 使用 TypeScript 开发，提供完整的类型定义文件。
+
+- 🎨 深入每个细节的主题定制能力。
+
+## 安装
+
+使用 npm 或 yarn 安装
+
+我们推荐使用 npm 或 yarn 的方式进行开发，不仅可在开发环境轻松调试，也可放心地在生产环境打包部署使用，享受整个生态圈和工具链带来的诸多好处。
+
+```bash
+$ npm install raturbo-components
+```
+
+```bash
+$ yarn add raturbo-components
+```
+
+## 示例
+
+```jsx
+import { Layout } from 'raturbo-components';
+
+ReactDOM.render(<Layout />, mountNode);
+```
+
+### 按需加载
+
+`turbo-components` 的 JS 代码默认支持基于 ES modules 的 tree shaking。
+
+### TypeScript
+
+`turbo-components` 使用 TypeScript 进行书写并提供了完整的定义文件。（不要引用 @types/turbo-components) 。
+
+## 兼容环境
+
+- 现代浏览器和 IE11（需要 [polyfills](https://ant.design/docs/react/getting-started-cn#兼容性)）。
+
+- 支持服务端渲染。
+
+- [Electron](https://www.electronjs.org/)
+
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera |
+| --------- | --------- | --------- | --------- | --------- | 
+|IE11, Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions
+
+
+对于 IE 系列浏览器，需要提供相应的 Polyfill 支持，建议使用 [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env) 来解决浏览器兼容问题。
+
+> 不支持 IE9。
