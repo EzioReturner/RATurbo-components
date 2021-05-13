@@ -1,0 +1,64 @@
+---
+name: 定制主题
+route: /docs/theme
+menu: 'docs'
+index: 4
+---
+
+# 定制主题
+
+Turbo Components 的样式使用了 Less 作为开发语言，并定义了一系列全局/组件的样式变量，你可以根据需求进行相应调整。 
+
+以下是一些最常用的通用变量，所有样式变量可以在 [这里](http://git.luckincoffee.com/front/turbo-components/blob/master/components/_theme/default/variables.less) 找到。
+
+```less
+@primary-color: #536ec2; // 全局主色调
+@disabled-color: rgba(0, 0, 0, 0.25); // 失效色
+@border-color: #f2f2f2;
+
+@text-color: rgba(0,0,0,0.45);
+@text-color-secondary: rgba(0,0,0,0.65);
+
+@spacing-mini: 4px;
+@spacing-small: 8px;
+@spacing-normal: 12px;
+
+@layout-menu-width: 255px;
+@layout-menu-collapsed-width: 80px;
+```
+
+原理上是使用 less 提供的 [modifyVars](http://lesscss.org/usage/#using-less-in-the-browser-modify-variables) 的方式进行覆盖变量，可以在本地运行 例子 查看定制效果。下面将针对不同的场景提供一些常用的定制方式。
+
+```git
+// webpack.config.js
+module.exports = {
+  rules: [{
+    test: /\.less$/,
+    use: [{
+      loader: 'style-loader',
+    }, {
+      loader: 'css-loader', // translates CSS into CommonJS
+    }, {
+      loader: 'less-loader', // compiles Less to CSS
++     options: {
++       lessOptions: { // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
++         modifyVars: {
++           '@primary-color': '#1DA57A',
++           '@spacing-mini': '2px'
++         },
++         javascriptEnabled: true,
++       },
++     },
+    }],
+    // ...other rules
+  }],
+  // ...other config
+}
+```
+
+## 官方主题
+未来我们将提供一些官方主题，包括但不限于
+
+- 🌑 暗黑主题
+
+- 📦 紧凑主题

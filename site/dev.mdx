@@ -1,0 +1,182 @@
+---
+name: 开发者指南
+route: /docs/dev
+menu: 'docs'
+index: 5
+---
+
+# 开发者指南
+
+## 技术栈
+我们使用包括并不止于下列技术栈，并希望开发者熟练掌握相关技能。
+
+- [node.js 12+](https://nodejs.org/zh-cn/)
+- [npm 3+](https://www.npmjs.com/)
+- [react 16+](https://facebook.github.io/react/)
+- [docz](https://www.docz.site/)
+- [less](http://lesscss.cn/)
+- [babel](https://babeljs.io/)
+- [gulp](https://www.gulpjs.com.cn/)
+- [webpack](https://webpack.docschina.org/)
+
+
+## 目录结构
+```bash
+├── components              // 组件文件夹
+│   ├── _utils              // 方法库
+│   └── index.ts            // 入口文件
+├── e2e                     // e2e test directory
+├── node_modules            // Black hole
+├── site                    // 文档目录
+├── scripts                 // 项目脚本
+├── src                     // Source code
+│    ├── docs-comps         // docz 组件
+│    └── utils              // 方法库
+├── .babelrc.js             
+├── .browserslistrc.js  
+├── .eslintrc.js             
+├── .gitignore             
+├── .prettierignore        
+├── .doczrc.js                
+├── gatsby-config.js
+├── gatsby-node.js
+├── gulpfile.js 
+├── package.json          
+├── README.md             
+├── tsconfig.build.json
+├── tsconfig.json
+└── yarn-lock              
+```
+
+## 开发规范
+组件库已集成eslint语法校验。
+
+- 代码请通过ESLint校验
+
+- 组件样式请加tc命名空间前缀并使用括折号-命名，例如：tc-button。（默认初始化新组件已做这层处理，相关样式请写在根classname内部）
+
+- js属性命名遵循驼峰命名法，例如：myName
+
+## 组件开发流程
+
+### 下载项目
+
+从 git 上 clone 项目
+
+```bash
+$ git clone http://git.luckincoffee.com/front/turbo-components
+$ cd turbo-components
+$ yarn install
+$ yarn dev
+```
+
+### 分支规范
+
+- 从 release 分支中切出分支
+
+- 分支命名需满足 feature-`date`-`yourComponentName`-`yourName` 
+
+```bash 
+$ git checkout -b feature-2077.02.31-helloWorld-zhewei.wang
+```
+
+### 执行脚本
+
+```bash
+# 初始化新组件请运行 `new` 命令，并补充信息
+$ yarn new
+
+...
+yarn run v1.13.0
+$ plop --plopfile ./scripts/plopfile.ts
+$ ? 请输入组件名称（多个单词使用驼峰命名） yourComponentName
+$ ? 请输入组件中文名称 
+$ ? 请输入组件描述 
+...
+```
+
+该命令会初始化组件对应的目录文件、代码、开发页面；
+
+- 组件路径：components/[componentName]
+
+- 文档路径：site/[componentName]
+
+> ⚠️注意： 组件开发请在 `components/[componentName]` 中进行，`__demo__` 文件夹中编写示例。
+文档编写位于 `site/[componentName]/index.mdx` 文件
+
+### 提交代码
+请使用 `yarn commit` 补充相应信息并通过eslint校验后可执行push命令。
+
+```bash
+$ yarn commit
+
+$ ? Select the type of change that you're committing: feat:        A new feature
+$ ? What is the scope of this change (e.g. component or file name): (press enter to skip) docs
+$ $ ? Write a short, imperative tense description of the change (max 60 chars):
+ (11) update docs
+$ ? Provide a longer description of the change: (press enter to skip)
+
+$ ? Are there any breaking changes? (y/N)
+```
+
+### 更新文档
+
+执行文档构建命令
+```bash
+$ yarn build:doc
+
+$ yarn run v1.22.10
+$ rimraf doc-site && docz build
+
+...
+
+info Done building in 58.614511249 sec
+✨  Done in 65.62s.
+```
+
+默认文档构建输出目录为 turbo-components/public ，将 public 文件替换至 [luckyturbodocs](http://git.luckincoffee.com/front/luckyturbodocs) 项目 `app/public`，
+提交后在 [lsop](http://lsop.luckincoffee.com/base/uda?child_route=3fxhxkx12x8) 中打包部署。
+
+
+## 如果你需要使用icon
+请参考 [react-feather](https://feathericons.com/)
+
+- 在组件中引用
+
+```javascript
+import ChevronsRight from 'react-feather/dist/icons/chevron-right';
+```
+
+- 在`components/_models`中声明icon
+```javascript
+...
+declare module 'react-feather/dist/icons/chevron-right';
+...
+```
+
+
+## 不同路径写法在构建中的区别
+
+- `import xxx from './**'` 相对路径文件在构建lib包时会将其打包进来
+- `import xxx from 'turbo-components/lib/**'` 该写法在构建lib时不会打包对应文件，在引用跨组件文件时，推荐该写法
+
+## 组件提交
+
+组件开发完成后请提交Merge Requests给相关人员进行review，通过后会手动将组件添加到包入口文件`components/index.ts`，执行相关命令即可发布成功；
+
+## 构建并发布npm库
+```bash
+$ npm run build
+
+...
+$ [14:09:47] Finished 'copyLess' after 2.41 s
+$ [14:09:47] Finished 'less2css' after 2.42 s
+$ [14:09:48] Finished 'compileCJS' after 2.98 s
+$ [14:09:48] Starting 'compileESM'...
+$ [14:09:48] Finished 'compileESM' after 694 ms
+$ [14:09:48] Finished 'default' after 3.68 s
+...
+
+$ npm set registry http://verdaccio.luckincoffee.com
+$ npm run pub
+```

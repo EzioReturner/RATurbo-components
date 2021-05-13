@@ -1,0 +1,62 @@
+---
+name: 使用 turbo-cli
+route: /docs/cli
+menu: 'docs'
+index: 3
+---
+
+# 使用 turbo-cli
+
+[turbo-cli](http://verdaccio.luckincoffee.com/-/web/detail/@lucky/turbo-cli) 是适配LK REACT应用的开发工具之一，
+turbo-cli 将会通过不同的模板辅助初始化项目并附带 turbo-components。
+
+## 安装和初始化
+
+安装脚手架
+
+```bash
+$ npm install -g turbo-cli --registry http://verdaccio.luckincoffee.com
+
+$ turbo
+
+$ Commands:
+$   add             add a new template
+$   delete          delete a template
+$   list            list all the templates
+$   init            generate a new project from a template
+```
+
+查看目前支持的模板
+
+```bash
+$ turbo list
+$ ★  ra - RA前端中后台解决方案
+$ ★  lk - LK前端中后台解决方案,携带egg服务
+```
+
+初始化项目，我们使用 `lk` 模板生成 myproject 文件项目
+
+```bash
+$ turbo init
+
+$ ? please input template name 
+$ lk
+
+$ ? please input your project name
+$ myproject
+
+$ ⠦ Downloading template...
+$ ✔ pull repo successed
+$ ✔ cd myproject
+$ ✔ npm install
+$ ✔ 🦄 start project
+```
+
+然后我们进入项目并启动。
+```bash
+$ cd myproject
+$ npm install
+$ npm run dev-client
+```
+
+此时浏览器会访问 http://localhost:9009/ ，看到界面就算成功了。
