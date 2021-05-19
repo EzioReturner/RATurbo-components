@@ -2,12 +2,14 @@
 name: {{pascalCase name}}
 cnName: {{CN}}
 route: /components/{{kebabCase name}}
-menu: 组件
+menu: {{compType}}
+contributors: {{contributors}}
+title: {{pascalCase name}} {{CN}}
 ---
 
 import CodeBox from '../../doc-comps/box';
-import BasicDemo from 'raturbo-components/lib/{{kebabCase name}}/__demo__/basic';
-import BasicDemoCode from '!raw-loader!raturbo-components/lib/{{kebabCase name}}/__demo__/basic';
+import BasicDemo from 'turbo-components/lib/{{kebabCase name}}/__demo__/basic';
+import BasicDemoCode from '!raw-loader!turbo-components/lib/{{kebabCase name}}/__demo__/basic';
 
 # {{pascalCase name}} {{CN}}
 
