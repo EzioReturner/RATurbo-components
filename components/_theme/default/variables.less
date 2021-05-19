@@ -1,12 +1,6 @@
 @primary-color: #536ec2; // 全局主色调
 @disabled-color: rgba(0, 0, 0, 0.25); // 失效色
-@mobile-disabled-color: #cdcdcd;
-@mobile-dashboard-zIndex: 20;
-@mobile-navigation-zIndex: 30;
-@mobile-fixedNavigatorIcon-zIndex: 35;
-
 @border-color: #f2f2f2;
-
 @success-color: #00ce68;
 @warning-color: #ffaf00;
 @error-color: #e65251;
@@ -29,7 +23,7 @@
 @gray-color: fade(@black-color, 33.5%);
 @gray-color-lighten: #e8e8e8;
 
-@layout-menu-width: 230px;
+@layout-menu-width: 255px;
 @layout-menu-collapsed-width: 80px;
 @layout-padding: 16px;
 @layout-header-height: 60px;
@@ -39,3 +33,42 @@
 @color-lighten: #999999;
 @color-normal: #666666;
 @color-darken: #333333;
+
+body {
+  --primary: @primary-color;
+  --primary-lighten: lighten(@primary-color, 8%);
+  --primary-lightener: lighten(@primary-color, 20%);
+  --primary-lightener-extra: lighten(@primary-color, 35%);
+  --primary-darken: darken(@primary-color, 8%);
+  --primary-1: tint(@primary-color, 90%);
+  --primary-2: tint(@primary-color, 80%);
+  --primary-5: tint(@primary-color, 20%);
+  --component-background: #fff;
+  --body-background: #f3f3f3;
+  --navigator-background: #fff;
+  --popover-background: #fff;
+  --text-color: rgba(0, 0, 0, 0.65);
+  --text-color-secondary: rgba(0, 0, 0, 0.45);
+  --heading-color: rgba(0, 0, 0, 0.85);
+  --border-color: #f2f2f2;
+  --shadow-color: rgba(189, 189, 189, 0.6);
+
+  &.darkTheme {
+    --text-color: rgba(255, 255, 255, 0.65);
+    --text-color-secondary: rgba(255, 255, 255, 0.45);
+    --heading-color: rgba(255, 255, 255, 0.85);
+    --body-background: #0c0c0c;
+    --navigator-background: #222;
+    --popover-background: #2a2a2a;
+    --component-background: #1d1d1d;
+    --border-color: #434343;
+    --shadow-color: rgba(0, 0, 0, 0.45);
+  }
+}
+
+ul,
+li,
+p {
+  margin: 0;
+  padding: 0;
+}
