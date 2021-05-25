@@ -1,0 +1,45 @@
+@import '../../_theme/default/variables.less';
+
+@popupPrefix: tc-sider;
+
+.@{popupPrefix}-navigator {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex: 0 0 @layout-menu-width;
+  flex-flow: column;
+  width: @layout-menu-width;
+  min-width: @layout-menu-width;
+  max-width: @layout-menu-width;
+  min-height: 100%;
+  overflow: hidden;
+  background-color: var(--component-background);
+  box-shadow: 0 0 28px var(--primary-lightener-extra);
+  transition: all 0.3s;
+
+  &.@{popupPrefix}-navigator-fixSider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+
+  &.@{popupPrefix}-navigator-collapsed {
+    flex: 0 0 @layout-menu-collapsed-width;
+    width: @layout-menu-collapsed-width;
+    min-width: @layout-menu-collapsed-width;
+    max-width: @layout-menu-collapsed-width;
+  }
+
+  &.@{popupPrefix}-inlineLayout-navigator {
+    &.@{popupPrefix}-navigator-fixSider {
+      top: @layout-header-height;
+      height: calc(100vh - 88px);
+      min-height: unset;
+    }
+  }
+
+  &.@{popupPrefix}-splitLayout-navigator {
+    z-index: 8;
+  }
+}
