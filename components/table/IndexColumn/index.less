@@ -1,0 +1,21 @@
+@popupPrefix: tc-table;
+
+.@{popupPrefix}-index-container {
+  z-index: 5;
+  display: flex;
+  flex-flow: row nowrap;
+  flex-shrink: 0;
+
+  .@{popupPrefix}-data-col {
+    border-right: 1px solid #f1f1f1 !important;
+  }
+
+  .@{popupPrefix}-columns-container,
+  .@{popupPrefix}-columns-group {
+    flex: 1;
+  }
+}
+
+#@{popupPrefix}-index-header {
+  z-index: 5;
+}

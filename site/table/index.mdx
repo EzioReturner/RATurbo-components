@@ -1,0 +1,167 @@
+---
+name: Table
+cnName: 表格
+route: /components/table
+menu: components
+contributors: zhev
+title: Table 表格
+---
+
+import CodeBox from '../../doc-comps/box';
+// import BasicDemo from 'raturbo-components/lib/table/__demo__/basic';
+// import BasicDemoCode from '!raw-loader!raturbo-components/lib/table/__demo__/basic';
+import DataKey from 'raturbo-components/lib/table/__demo__/byDataKey';
+import DataKeyCode from '!raw-loader!raturbo-components/lib/table/__demo__/byDataKey';
+import Sort from 'raturbo-components/lib/table/__demo__/sort';
+import SortCode from '!raw-loader!raturbo-components/lib/table/__demo__/sort';
+import Size from 'raturbo-components/lib/table/__demo__/size';
+import SizeCode from '!raw-loader!raturbo-components/lib/table/__demo__/size';
+import HaveIndex from 'raturbo-components/lib/table/__demo__/haveIndex';
+import HaveIndexCode from '!raw-loader!raturbo-components/lib/table/__demo__/haveIndex';
+import Group from 'raturbo-components/lib/table/__demo__/group';
+import GroupCode from '!raw-loader!raturbo-components/lib/table/__demo__/group';
+import Summary from 'raturbo-components/lib/table/__demo__/summary';
+import SummaryCode from '!raw-loader!raturbo-components/lib/table/__demo__/summary';
+import Merge from 'raturbo-components/lib/table/__demo__/merge';
+import MergeCode from '!raw-loader!raturbo-components/lib/table/__demo__/merge';
+import Pagination from 'raturbo-components/lib/table/__demo__/pagination';
+import PaginationCode from '!raw-loader!raturbo-components/lib/table/__demo__/pagination';
+import Fixed from 'raturbo-components/lib/table/__demo__/fixed';
+import FixedCode from '!raw-loader!raturbo-components/lib/table/__demo__/fixed';
+import FixedHeader from 'raturbo-components/lib/table/__demo__/fixedHeader';
+import FixedHeaderCode from '!raw-loader!raturbo-components/lib/table/__demo__/fixedHeader';
+import FixedAll from 'raturbo-components/lib/table/__demo__/fixedAll';
+import FixedAllCode from '!raw-loader!raturbo-components/lib/table/__demo__/fixedAll';
+import CustomCell from 'raturbo-components/lib/table/__demo__/customCell';
+import CustomCellCode from '!raw-loader!raturbo-components/lib/table/__demo__/customCell';
+
+展示行列数据
+
+## 如何使用
+
+指定表格的数据源 `dataSource` 为一个数组
+```javascript
+const dataSource = {
+  [
+    ['ezio', 18],
+    ['mary', 20]
+  ]
+};
+
+const columns = {
+  [
+    { title: 'name', dataIndex: 0, id: '1' },
+    { title: 'age', dataIndex: 1, id: '2' }
+  ]
+};
+
+// or
+
+const dataSource1 = {
+  [
+    {name: 'ezio', age: 18},
+    {name: 'mary', age: 16}
+  ]
+};
+
+const columns1 = {
+  [
+    { title: 'name', dataKey: 'name', id: '1' },
+    { title: 'age', dataKey: 'age', id: '2' }
+  ]
+};
+```
+
+## 代码演示
+<!-- 
+<CodeBox code={BasicDemoCode} title="基本使用" description="简单的表格，使用 dataIndex 读取数据">
+  <BasicDemo></BasicDemo>
+</CodeBox> -->
+
+<CodeBox code={DataKeyCode} title="基本使用" description="简单的表格，使用 dataKey 读取数据">
+  <DataKey></DataKey>
+</CodeBox>
+
+<CodeBox code={SortCode} title="排序" description="对某列进行排序，通过指定列的 `sorter` 函数即可启动排序按钮， 
+`sorter: function(rowA, rowB) { ... }`， rowA、rowB 为比较的两个行数据，使用 `defaultSortOrder` 属性，设置列的默认排序顺序。">
+  <Sort></Sort>
+</CodeBox>
+
+<CodeBox code={SortCode} title="表格大小" description="通过控制 `size` 入参调整 table 大小">
+  <Size></Size>
+</CodeBox>
+
+<CodeBox code={HaveIndexCode} title="显示序号" description="传入 `showIndex` 以显示序号">
+  <HaveIndex></HaveIndex>
+</CodeBox>
+
+<CodeBox code={PaginationCode} title="数据分页" description="表格的分页设置。">
+  <Pagination></Pagination>
+</CodeBox>
+
+<CodeBox code={FixedCode} title="固定列" description="对于列数很多的数据，可以固定前后的列，横向滚动查看其它数据，通过设置 `fixedSize` 控制">
+  <Fixed></Fixed>
+</CodeBox>
+
+<CodeBox code={FixedHeaderCode} title="固定表头" description="方便一页内展示大量数据。">
+  <FixedHeader></FixedHeader>
+</CodeBox>
+
+<CodeBox code={FixedAllCode} title="固定表头与列" description="方便一页内展示大量数据。建议容器的高度尽量大于表格高度">
+  <FixedAll></FixedAll>
+</CodeBox>
+
+<CodeBox code={GroupCode} title="表头分组" description="`columns[n]` 可以内嵌 `children`，以渲染分组表头。">
+  <Group></Group>
+</CodeBox>
+
+<CodeBox code={SummaryCode} title="总结栏" description="通过设置 `colSummaryData` 设置列总结数据，通过 `rowSummaryCol` 配置额外行总结">
+  <Summary></Summary>
+</CodeBox>
+
+<CodeBox code={MergeCode} title="列单元格合并" description="通过设置 `mergeRow` 设置列单元格合并">
+  <Merge></Merge>
+</CodeBox>
+
+<CodeBox code={CustomCellCode} title="自定义单元格" description="设置 `column.render` 渲染自定义单元格，通过 `data.cellType` 区分表头与数据单元格，`customGroupHeader` 用于渲染所有表头分组 group title">
+  <CustomCell></CustomCell>
+</CodeBox>
+
+## API
+
+### Table
+
+| 属性 | 说明 | 类型 | 是否必须 | 默认值 |
+| --- | ---- | --- | ------ | ------ |
+| dataSource | 数据数组 | object[] | 是 | - |
+| columns | 表格列的配置描述，具体项见下表 | ColumnItem[] | 是 | - |
+| wrapperClassName | 自定义 table wrapper 的 className | string | 否 | - |
+| styles | 自定义 table wrapper 的 style | React.CSSProperties | 否 | - |
+| size | 设置 table 的大小类型 | mini &#124; middle &#124; large | 否 | mini |
+| fixedHeader | 固定表头 | boolean | 否 | false |
+| showIndex | 显示序号 | boolean | 否 | false |
+| fixedSize | 固定前 x 列 | number | 否 | - |
+| customGroupHeader | 自定义渲染 group title | (data, originNode) => React.ReactNode; | 否 | - |
+| colSummaryData | 列总结数据 | object[] | 否 | - |
+| pagination | 分页器 | 参考 [pagination](/components/pagination) 文档，为空则不显示分页 | 否 | - |
+| rowSummaryCol | 行总结数据列，具体项见下表 | RowSummaryCol[] | 否 | - |
+
+### Column
+| 属性 | 说明 | 类型 | 是否必须 | 默认值 |
+| --- | ---- | --- | ------ | ------ |
+| title | 表格标题 | string | 是 | - |
+| align | 列对齐状态 | left &#124; center &#124; right | 否 | left |
+| dataIndex | 列数据在数据项中对应的路径，支持通过数组查询嵌套路径 `将在后续版本废弃` | number | 否 | - |
+| dataKey | 列数据在数据项中对应的路径，支持通过数组查询嵌套路径 `推荐使用` | string | 否 | - |
+| id | React 需要的 key，如果已经设置 dataKey 可以忽略 | string | 否 | - |
+| defaultSortOrder | 默认排序方向 | asc &#124; desc | 否 | - |
+| width | 列宽度 | string | 否 | - |
+| render | 自定义单元格 | (data, originNode) => React.ReactNode | 否 | - |
+| sorter | 自定义排序函数 | (a, b) => any | 否 | - |
+| children | 用于创建嵌套分组表头 | ColumnItem[] | 否 | - |
+| mergeRow | 开启合并单元格 | boolean | 否 | - |
+
+### RowSummaryCol `继承 Column`
+| 属性 | 说明 | 类型 | 是否必须 | 默认值 |
+| --- | ---- | --- | ------ | ------ |
+| totalData | 当同时开启行列总结时，用于取行列总计数据 | any | 否 | - |
