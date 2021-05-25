@@ -1,0 +1,111 @@
+@import '../../_theme/default/variables.less';
+
+@popupPrefix: tc-drawer;
+
+.@{popupPrefix} {
+  position: fixed;
+  z-index: 888;
+  width: 100%;
+  height: 0;
+  transition: height 0s ease 0.4s;
+
+  &.@{popupPrefix}-in-parent {
+    position: absolute !important;
+
+    .@{popupPrefix}-mask {
+      position: absolute !important;
+    }
+  }
+
+  &.@{popupPrefix}-direction-up {
+    right: 0;
+    bottom: 0;
+
+    .@{popupPrefix}-wrapper {
+      bottom: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+
+    &.@{popupPrefix}-opened .@{popupPrefix}-wrapper {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &.@{popupPrefix}-direction-left {
+    top: 0;
+    left: 0;
+
+    .@{popupPrefix}-wrapper {
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    &.@{popupPrefix}-opened .@{popupPrefix}-wrapper {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &.@{popupPrefix}-direction-down {
+    top: 0;
+    right: 0;
+
+    .@{popupPrefix}-wrapper {
+      transform: translate3d(0, -100%, 0);
+    }
+
+    &.@{popupPrefix}-opened .@{popupPrefix}-wrapper {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &.@{popupPrefix}-direction-right {
+    top: 0;
+    right: 0;
+
+    .@{popupPrefix}-wrapper {
+      right: 0;
+      transform: translate3d(100%, 0, 0);
+    }
+
+    &.@{popupPrefix}-opened .@{popupPrefix}-wrapper {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &.@{popupPrefix}-opened {
+    height: 100% !important;
+    transition: none;
+
+    .@{popupPrefix}-mask {
+      height: 100%;
+      opacity: 1;
+      transition: none;
+      animation: fadeIn 0.4s ease;
+    }
+  }
+
+  .@{popupPrefix}-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transition: opacity 0.4s ease, height 0s ease 0.4s;
+  }
+
+  .@{popupPrefix}-wrapper {
+    position: absolute;
+    transition: transform 0.4s ease;
+    will-change: transform;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

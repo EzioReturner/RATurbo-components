@@ -1,0 +1,47 @@
+---
+name: Drawer
+cnName: 抽屉
+route: /components/drawer
+menu: components
+contributors: zhev
+title: Drawer 抽屉
+---
+
+import CodeBox from '../../doc-comps/box';
+import BasicDemo from 'turbo-components/lib/drawer/__demo__/basic';
+import BasicDemoCode from '!raw-loader!turbo-components/lib/drawer/__demo__/basic';
+import DirectionDemo from 'turbo-components/lib/drawer/__demo__/direction';
+import DirectionDemoCode from '!raw-loader!turbo-components/lib/drawer/__demo__/direction';
+
+屏幕边缘滑出的浮层面板。
+
+## 如何使用
+抽屉从父窗体边缘滑入，覆盖住部分父窗体内容。用户在抽屉内操作时不必离开当前任务，操作完成后，可以平滑地回到原任务。
+
+- 当需要一个附加的面板来控制父窗体内容，这个面板在需要时呼出。比如，控制界面展示样式，往界面中添加内容。
+
+- 当需要在当前任务流中插入临时任务，创建或预览附加内容。比如展示协议条款，创建子对象。
+
+## 代码演示
+
+<CodeBox code={BasicDemoCode} title="基本使用" description="基础抽屉，点击触发按钮抽屉从右滑出，点击遮罩区关闭">
+  <BasicDemo />
+</CodeBox>
+
+<CodeBox code={DirectionDemoCode} title="基本使用" description="基础抽屉，点击触发按钮抽屉从右滑出，点击遮罩区关闭">
+  <DirectionDemo />
+</CodeBox>
+
+## API
+
+| 属性 | 说明 | 类型 | 是否必须 | 默认值 |
+| --- | ---- | --- | ------ | ------ |
+| open | Drawer 是否可见 | boolean | 是 | - |
+| openChange | open 改变的回调函数 | function(open) | 否 | - |
+| drawerStyle | Drawer 弹出层样式 | left &#124; right &#124; top &#124; bottom | 否 | bottom |
+| targetContainer | 宿主容器 | HTMLElement | 否 | body |
+| maskClosable | 点击蒙层是否允许关闭	 | boolean | 否 | true |
+| wrapperStyle | wrapper 容器样式 | CSSProperties | 否 | - |
+| maskStyle | mask 遮罩样式 | CSSProperties | 否 | - |
+| drawerStyle | Drawer 弹出层样式 | CSSProperties | 否 | - |
+| direction | 弹出方向 | CSSProperties | 否 | - |
