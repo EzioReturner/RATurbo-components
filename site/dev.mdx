@@ -89,7 +89,7 @@ $ yarn new
 ...
 yarn run v1.13.0
 $ plop --plopfile ./scripts/plopfile.ts
-$ ? 请输入组件名称（多个单词使用驼峰命名） yourComponentName
+$ ? 请输入组件名称（多个单词使用短横线隔开式命名） your-component-name
 $ ? 请输入组件中文名称 
 $ ? 请输入组件描述 
 ...
@@ -164,6 +164,9 @@ declare module 'react-feather/dist/icons/chevron-right';
 组件开发完成后请提交Merge Requests给相关人员进行review，通过后会手动将组件添加到包入口文件`components/index.ts`，执行相关命令即可发布成功；
 
 ## 构建并发布npm库
+
+> 如果您首次发布，请使用npm login登录
+
 ```bash
 $ npm run build
 
@@ -176,5 +179,5 @@ $ [14:09:48] Finished 'compileESM' after 694 ms
 $ [14:09:48] Finished 'default' after 3.68 s
 ...
 
-$ npm run pub
+$ npm publish
 ```
