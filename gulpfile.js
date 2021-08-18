@@ -11,7 +11,11 @@ const paths = {
     esm: 'esm',
     dist: 'dist',
   },
-  styles: 'components/**/*.less',
+  styles: [
+    'components/**/*.less',
+    '!components/**/__demo__/*.{less,css}',
+    '!components/**/__tests__/*.{less,css}'
+  ],
   scripts: [
     'components/**/*.{ts,tsx}',
     '!components/**/__demo__/*.{ts,tsx}',

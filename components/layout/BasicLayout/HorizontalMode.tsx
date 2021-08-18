@@ -1,13 +1,8 @@
 import React from 'react';
-// import Loading from '@components/Loading';
-// import { observer, inject } from 'mobx-react';
-// import LayoutStore from '@store/layoutStore';
 import classNames from 'classnames';
 import LayoutHeader from 'raturbo-components/lib/header/HorizontalHeader';
 import 'raturbo-components/lib/header/style';
 import BasicLayoutContext from '../context/BasicLayoutContext';
-// import Footer from '@components/Footer';
-// import { copyright } from '@config/setting';
 import { HorizontalModeProps } from '../interface';
 
 // 顶部导航栏模式
@@ -27,11 +22,7 @@ const HorizontalMode: React.FC<HorizontalModeProps> = props => {
       )}
     >
       {!hideHeader && <LayoutHeader>{_header}</LayoutHeader>}
-      <div className={`${prefixCls}-basicLayout-horizontal-wrapper`}>
-        {props.children}
-        {/* {copyright && <Footer propStyle={{ marginTop: '16px' }} />} */}
-      </div>
-      {/* <Loading {...loadingOptions} /> */}
+      <div className={`${prefixCls}-basicLayout-horizontal-wrapper`}>{props.children}</div>
     </div>
   );
 };

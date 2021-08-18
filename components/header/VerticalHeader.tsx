@@ -21,16 +21,10 @@ const VerticalHeader: React.FC<HeaderProps> = props => {
 
   const VerticalMenuHeaderBody = (
     <>
-      {/* {isInlineLayout && (_siteLogo || <SiteDetail />)}
-      {showSiderBar && !isInlineLayout && IconCollapsed} */}
       {!hideCollapsed && (
         <CollapsedIcon onChange={onChangeCollapsed} collapsed={collapsed ?? false} />
       )}
       {children}
-      {/* <div className={`${prefixCls}-rightPlace`}>
-        <UserInfo />
-        {usei18n && <SelectLang />}
-      </div> */}
     </>
   );
 
@@ -42,9 +36,7 @@ const VerticalHeader: React.FC<HeaderProps> = props => {
           `${prefixCls}-vertical`,
           collapsed && `${prefixCls}-collapsed`,
           isMobile && `${prefixCls}-isMobile`,
-          // !showSiderBar && `${prefixCls}-withoutMenu`,
           IS_INLINE_TYPE ? `${prefixCls}-inlineLayout` : `${prefixCls}-splitLayout`,
-          // isDarkTheme && `${prefixCls}-darkTheme`
         )}
         style={{
           opacity: !fixHeader ? 1 : 0,
@@ -60,9 +52,7 @@ const VerticalHeader: React.FC<HeaderProps> = props => {
           `${prefixCls}-vertical`,
           collapsed && `${prefixCls}-collapsed`,
           isMobile && `${prefixCls}-isMobile`,
-          // !showSiderBar && `${prefixCls}-withoutMenu`,
           IS_INLINE_TYPE ? `${prefixCls}-inlineLayout` : `${prefixCls}-splitLayout`,
-          // isDarkTheme && `${prefixCls}-darkTheme`
         )}
         style={{
           zIndex: !fixHeader ? -1 : 4,

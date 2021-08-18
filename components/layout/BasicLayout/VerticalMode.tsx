@@ -33,10 +33,7 @@ const VerticalMode: React.FC<VerticalModeProps> = props => {
         )}
       >
         {Header}
-        <div className={`${prefixCls}-basicLayout-wrapper-content`}>
-          {props.children}
-          {/* {copyright && <Footer propStyle={{ margin: '16px 0' }} />} */}
-        </div>
+        <div className={`${prefixCls}-basicLayout-wrapper-content`}>{props.children}</div>
       </div>
     </>
   );
@@ -55,25 +52,6 @@ const VerticalMode: React.FC<VerticalModeProps> = props => {
         {Sider}
         {props.children}
       </div>
-      {/* <div
-        className={classNames(
-          `${prefixCls}-basicLayout-inlineMode-footer`,
-          // isDarkTheme && `${prefixCls}-basicLayout-inlineMode-footer-dark`
-        )}
-      >
-        {!hideSider && (
-          <div
-            className={classNames(
-              `${prefixCls}-basicLayout-inlineMode-footer-icon`,
-              collapsed && `${prefixCls}-basicLayout-inlineMode-footer-collapsed`,
-            )}
-            // onClick={() => toggleCollapsed()}
-          >
-            {IconCollapsed}
-          </div>
-        )}
-        {copyright && <Footer propStyle={{ alignSelf: 'flex-end' }} />}
-      </div> */}
     </>
   );
 
