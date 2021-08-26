@@ -7,6 +7,7 @@ export interface HeaderProps {
   hideCollapsed?: boolean;
   onChangeCollapsed?: (collapsed: boolean) => void;
   headerMode?: 'vertical' | 'horizontal';
+  collapseIcon?: (originNode: React.ReactNode) => React.ReactNode;
 }
 
 export interface HorizontalHeaderProps {

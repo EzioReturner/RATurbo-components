@@ -15,15 +15,18 @@ const VerticalHeader: React.FC<HeaderProps> = props => {
     isMobile,
     hideCollapsed,
     onChangeCollapsed,
+    collapseIcon,
   } = props;
 
   const IS_INLINE_TYPE = verticalType === 'inline';
 
+  const CollapsedNode = (
+    <CollapsedIcon onChange={onChangeCollapsed} collapsed={collapsed ?? false} />
+  );
+
   const VerticalMenuHeaderBody = (
     <>
-      {!hideCollapsed && (
-        <CollapsedIcon onChange={onChangeCollapsed} collapsed={collapsed ?? false} />
-      )}
+      {!hideCollapsed && (collapseIcon ? collapseIcon(CollapsedNode) : CollapsedNode)}
       {children}
     </>
   );

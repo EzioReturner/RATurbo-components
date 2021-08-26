@@ -1,0 +1,40 @@
+---
+name: Spin
+cnName: 加载中
+route: /components/spin
+menu: components
+contributors: ezio
+title: Spin 加载中
+---
+
+import CodeBox from '../../doc-comps/box';
+import BasicDemo from 'raturbo-components/lib/spin/__demo__/basic';
+import BasicDemoCode from '!raw-loader!raturbo-components/lib/spin/__demo__/basic';
+import TextDemo from 'raturbo-components/lib/spin/__demo__/text';
+import TextDemoCode from '!raw-loader!raturbo-components/lib/spin/__demo__/text';
+
+用于页面和区块的加载中状态。
+
+## 如何使用
+页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。
+
+## 代码演示
+
+<CodeBox code={BasicDemoCode} title="基本使用" description="一个简单的 loading 状态。">
+  <BasicDemo></BasicDemo>
+</CodeBox>
+
+<CodeBox code={TextDemoCode} title="自定义描述文案与指示器" description="使用自定义描述文案与指示器。">
+  <TextDemo></TextDemo>
+</CodeBox>
+
+## API
+
+| 属性 | 说明 | 类型 | 是否必须 | 默认值 |
+| --- | ---- | --- | ------ | ------ |
+| spinning | 是否为加载中状态	| boolean | 是 | - |
+| fixed | 包装器定位为固定	| boolean | 否 | false |
+| propClass | 包装器的类属性	| string | 否 | - |
+| propStyle | 包装器的样式属性	| React.CSSProperties | 否 | - |
+| content | 加载指示符	| React.ReactNode | 否 | - |
+| text | 当作为包裹元素时，可以自定义描述文案	| string | number | React.ReactNode | 否 | - |

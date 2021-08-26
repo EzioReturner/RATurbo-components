@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface LayoutProps {
   header?: React.ReactNode;
   // siteLogo?: React.ReactNode;
@@ -25,6 +27,7 @@ export interface VerticalModeProps extends BasicLayoutProps {
   hideSider?: boolean;
   fixSider?: boolean;
   sider?: React.ReactNode;
+  collapseIcon?: (originNode: React.ReactNode) => React.ReactNode;
 }
 
 export interface SiteDetailProps {

@@ -10,10 +10,6 @@ const styles: React.CSSProperties = {
   color: 'red',
 };
 
-const contentStyles: React.CSSProperties = {
-  animation: 'roll 1s linear infinite forwards',
-};
-
 const red = {
   color: 'red',
 };
@@ -22,7 +18,7 @@ export default () => (
   <div style={styles}>
     <Spin
       spinning
-      content={<Aperture style={contentStyles} />}
+      content={<Aperture />}
       text={
         <span style={red} role="img" aria-label="">
           热烈庆祝中国🇨🇳共产党成立100周年

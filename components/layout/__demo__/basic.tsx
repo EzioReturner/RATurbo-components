@@ -55,6 +55,7 @@ export default () => {
         onChangeCollapsed={_col => setCollapsed(_col)}
         header={<div className="center-style">header</div>}
         sider={<div className="center-style">sider</div>}
+        collapseIcon={originNode => <div>{originNode}</div>}
       >
         <div className="layout-body">body</div>
       </Layout>
