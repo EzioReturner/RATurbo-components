@@ -1,6 +1,6 @@
 {
   "name": "raturbo-components",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": "zhev",
   "description": "A React UI Library.",
   "license": "MIT",
@@ -127,7 +127,6 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
