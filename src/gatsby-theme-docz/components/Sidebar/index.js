@@ -65,6 +65,12 @@ export const Sidebar = React.forwardRef((props, ref) => {
             {renderMenu(docsMenus?.menu.sort((a,b)=>(a.index-b.index)))}
           </div>
         }
+        {
+          currentDoc.menu === 'logs' && 
+          <div>
+            {renderMenu(logsMenus?.menu)}
+          </div>
+        }
       </Box>
     </>
   );
