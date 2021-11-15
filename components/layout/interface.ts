@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface LayoutProps {
   header?: React.ReactNode;
   // siteLogo?: React.ReactNode;

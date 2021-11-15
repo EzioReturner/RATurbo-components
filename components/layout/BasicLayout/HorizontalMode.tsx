@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import LayoutHeader from 'raturbo-components/lib/header/HorizontalHeader';
-import 'raturbo-components/lib/header/style';
+import LayoutHeader from '../../header';
 import BasicLayoutContext from '../context/BasicLayoutContext';
 import { HorizontalModeProps } from '../interface';
 
@@ -21,7 +20,7 @@ const HorizontalMode: React.FC<HorizontalModeProps> = props => {
         fixHeader && `${prefixCls}-basicLayout-horizontal-fixHeader`,
       )}
     >
-      {!hideHeader && <LayoutHeader>{_header}</LayoutHeader>}
+      {!hideHeader && <LayoutHeader headerMode="horizontal">{_header}</LayoutHeader>}
       <div className={`${prefixCls}-basicLayout-horizontal-wrapper`}>{props.children}</div>
     </div>
   );

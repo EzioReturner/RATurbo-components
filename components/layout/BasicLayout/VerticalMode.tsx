@@ -1,11 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import LayoutHeader from 'raturbo-components/lib/header/VerticalHeader';
-import LayoutSidebar from 'raturbo-components/lib/sider';
+import LayoutHeader from '../../header';
+import LayoutSidebar from '../../sider';
 import { VerticalModeProps } from '../interface';
 import BasicLayoutContext from '../context/BasicLayoutContext';
-import 'raturbo-components/lib/sider/style';
-import 'raturbo-components/lib/header/style';
 
 // 左侧导航栏模式
 const VerticalMode: React.FC<VerticalModeProps> = props => {
@@ -17,7 +15,11 @@ const VerticalMode: React.FC<VerticalModeProps> = props => {
 
   const IS_INLINE_TYPE = verticalType === 'inline';
 
-  const Header = !hideHeader ? <LayoutHeader {...rest}>{_header}</LayoutHeader> : null;
+  const Header = !hideHeader ? (
+    <LayoutHeader headerMode="vertical" {...rest}>
+      {_header}
+    </LayoutHeader>
+  ) : null;
 
   const Sider = !hideSider ? <LayoutSidebar {...rest}>{_sider}</LayoutSidebar> : null;
 

@@ -1,0 +1,46 @@
+---
+name: RouterRender
+cnName: 路由渲染
+route: /components/router-render
+menu: layout
+contributors: 王哲威
+title: RouterRender 路由渲染
+---
+
+import CodeBox from '../../doc-comps/box';
+import BasicDemo from 'raturbo-components/lib/router-render/__demo__/basic';
+import BasicDemoCode from '!raw-loader!raturbo-components/lib/router-render/__demo__/basic';
+
+通过路由配置渲染对应节点
+
+## 如何使用
+
+- 项目需要使用复杂嵌套理由时
+
+## 代码演示
+
+<CodeBox code={BasicDemoCode} title="基本使用" description="通过嵌套路由配置渲染节点">
+  <BasicDemo></BasicDemo>
+</CodeBox>
+
+
+## API
+
+| 属性 | 说明 | 类型 | 是否必须 | 默认值 |
+| --- | ---- | --- | ------ | ------ |
+| routeConfig | 路由配置文件 | <T = RouteProps> | 是 | RouteProps |
+| exception | 异常渲染节点 | React.ComponentType | 否 | - |
+| nodeContainer | 节点包裹容器 | (data: { component, route }, children) => React.ReactNode | 否 | - |
+
+## RouteProps
+
+| 属性 | 说明 | 类型 | 是否必须 | 默认值 |
+| --- | ---- | --- | ------ | ------ |
+| path | 路由路径 | string | 是 | - |
+| component | 组件 | React.component | 是 | - |
+| routes | 子节点 | RouteProps | 否 | - |
+| redirect | 重定向 | string | 否 | - |
+| strict | 严格匹配 | string | 否 | - |
+| exact | 精确匹配 | string | 否 | - |
+| key | 标识 | string | 否 | - |
+| extraInfo | 额外信息 | any | 否 | - |

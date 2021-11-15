@@ -2,7 +2,6 @@ import React from 'react';
 import classnames from 'classnames';
 import BodyContext from '../context/BodyContext';
 import { ColumnItem } from '../interface';
-import './index.less';
 
 const ColSummaryCell: React.FC<{
   value?: any;
