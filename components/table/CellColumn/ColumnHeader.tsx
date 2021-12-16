@@ -1,9 +1,14 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 import BodyContext from '../context/BodyContext';
+import { ColumnItem, CellRenderProps } from '../interface';
+
+/**
+ * @name 表格表头区域
+ */
 
 interface ColumnHeaderProps {
-  column: StoreKeyValue;
+  column: ColumnItem;
 }
 
 const ColumnHeader: React.FC<ColumnHeaderProps> = props => {
@@ -11,7 +16,7 @@ const ColumnHeader: React.FC<ColumnHeaderProps> = props => {
 
   const { handleChangeSort, sortArr, prefixCls } = useContext(BodyContext);
 
-  const { render: renderCell, ...restInfo } = column;
+  const { headerRender, ...restInfo } = column;
 
   const { title: colTitle, $_groupIndex: colIndex, align: colAlign, sorter } = restInfo;
 
@@ -45,10 +50,14 @@ const ColumnHeader: React.FC<ColumnHeaderProps> = props => {
 
   return (
     <div
-      className={`${prefixCls}-data-cell ${prefixCls}-header ${prefixCls}-col-header`}
+      className={`${prefixCls}-data-cell ${prefixCls}-header-cell ${
+        sorter ? 'with-sorter' : ''
+      }`.trim()}
       onClick={() => sorter && handleChangeSort && handleChangeSort(column)}
     >
-      {(renderCell && renderCell({ ...restInfo, cellType: 'header' }, TitleNode)) || TitleNode()}
+      {(headerRender &&
+        headerRender({ ...restInfo, cellData: colTitle } as CellRenderProps, TitleNode)) ||
+        TitleNode()}
     </div>
   );
 };

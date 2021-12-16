@@ -1,0 +1,20 @@
+@popupPrefix: tc-table;
+
+.@{popupPrefix}-bordered {
+  .@{popupPrefix}-wrapper {
+    border: 1px solid #f0f0f0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .@{popupPrefix}-header-cell {
+    
+    &::after {
+      display: none;
+    }
+  }
+
+  .@{popupPrefix}-data-cell {
+    border-right: 1px solid #f0f0f0;
+  }
+}

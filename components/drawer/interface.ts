@@ -7,4 +7,5 @@ export interface TcDrawerProps {
   drawerStyle?: React.CSSProperties;
   targetContainer?: any;
   maskClosable?: boolean;
+  forceRender?: boolean;
 }

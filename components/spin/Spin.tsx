@@ -7,6 +7,19 @@ const prefixCls = 'tc-spin';
 const Spin: React.FC<SpinProps> = props => {
   const { spinning, fixed, propStyle, text, content, propClass } = props;
 
+  const CycleLoading = <div id={`${prefixCls}-content-circle`} />;
+
+  const AngleLoading = (
+    <div id={`${prefixCls}-content-angle`}>
+      <span className="angle-border border-1"></span>
+      <span className="angle-border border-2"></span>
+      <span className="angle-border border-3"></span>
+      <div className="angle-content">
+        <div className="angle-content-bg"></div>
+      </div>
+    </div>
+  );
+
   const BarLoading = (
     <div id={`${prefixCls}-content-bar`}>
       <span></span>

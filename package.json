@@ -1,6 +1,6 @@
 {
   "name": "raturbo-components",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "author": "zhev",
   "description": "A React UI Library.",
   "license": "MIT",
@@ -43,14 +43,14 @@
     "test:update": "jest --updateSnapshot",
     "new": "plop --plopfile ./scripts/plopfile.ts",
     "postnew": "prettier --write components/**/*{ts,tsx} --loglevel silent",
-    "lint-doc-comps": "prettier --write doc-comps/**/*.{tsx,ts} && eslint doc-comps/**/*.{tsx,ts} --fix && stylelint --syntax less doc-comps/**/*.less --fix",
-    "lint-components": "prettier --write components/**/*{ts,tsx} && eslint components/**/*.{tsx,ts} --fix && stylelint --syntax less components/**/*.less --fix",
+    "lint-doc-comps": "prettier --write 'doc-comps/**/*.{tsx,ts}' && eslint 'doc-comps/**/*.{tsx,ts}' --fix && stylelint --syntax less 'doc-comps/**/*.less' --fix",
+    "lint-components": "prettier --write 'components/**/*{ts,tsx}' && eslint 'components/**/*.{tsx,ts}' --fix && stylelint --syntax less 'components/**/*.less' --fix",
     "lint-fix": "yarn lint-doc-comps && yarn lint-components"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.14.2",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.13.8",
     "@babel/plugin-proposal-object-rest-spread": "^7.7.7",
     "@babel/plugin-proposal-optional-chaining": "^7.13.12",
     "@babel/plugin-transform-runtime": "^7.7.6",
@@ -58,14 +58,13 @@
     "@babel/preset-react": "^7.7.4",
     "@babel/preset-typescript": "^7.7.7",
     "@babel/runtime": "^7.7.7",
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
     "@types/classnames": "^2.2.11",
     "@types/jest": "^24.0.25",
-    "@types/lodash": "^4.14.170",
+    "@types/lodash": "^4.14.168",
     "@types/react-highlight": "^0.12.2",
+    "@types/react-router-dom": "^5.3.2",
     "@types/styled-components": "^5.1.9",
     "@types/testing-library__react": "^9.1.2",
     "@types/vfile-message": "^2.0.0",
@@ -92,16 +91,17 @@
     "plop": "^2.6.0",
     "prettier": "^1.19.1",
     "raw-loader": "^4.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-highlight": "^0.14.0",
+    "react-router-dom": "^5.3.0",
     "rimraf": "^3.0.0",
     "semver": "^7.3.2",
     "snapshot-diff": "^0.6.1",
     "through2": "^3.0.1",
     "ts-jest": "^24.2.0",
     "ts-node": "^8.10.1",
-    "typescript": "^3.7.3",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-highlight": "^0.14.0"
+    "typescript": "^3.7.3"
   },
   "lint-staged": {
     "components/**/*.ts?(x)": [
@@ -128,14 +128,12 @@
       "pre-commit": "lint-staged"
     }
   },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  },
   "dependencies": {
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
     "react-feather": "^2.0.9"
+  },
+  "peerDependencies": {
+    "react-router-dom": "^5.2.0"
   }
 }

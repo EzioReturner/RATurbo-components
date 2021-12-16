@@ -2,17 +2,16 @@ import React from 'react';
 import Table from 'raturbo-components/lib/table';
 import 'raturbo-components/lib/table/style';
 
-const colData = { name: 'total', age: 18 + 20 + 250 + 2077, address: '-' };
-
 export default () => (
   <Table
-    colSummaryData={colData}
+    colSummaryData={{ name: 'total', age: 18 + 20 + 250 + 2077, address: '-' }}
     rowSummaryCol={[
       {
         title: 'score',
         id: 'score',
         dataKey: 'score',
         width: '120px',
+        totalData: 105,
       },
       {
         title: 'parent',

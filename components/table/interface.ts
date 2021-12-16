@@ -24,6 +24,8 @@ export interface LKTablePro {
   fixedSize?: number; // 固定滚动列数
   colSummaryData?: any;
   rowSummaryCol?: RowSummaryCol[]; // 行总计独立column信息
+  zebraStripe?: boolean;
+  bordered?: boolean;
 }
 
 export type SortType = 'desc' | 'asc' | undefined | 'none';
@@ -32,6 +34,7 @@ export type SortFn = ((a: any, b: any) => any) | null | undefined;
 
 export type CellRenderProps = ColumnItem & {
   [name: string]: any;
+  cellData: any;
   rowData: any; // 此行的数据
   rowIndex: number; // 当前的行数
   pageData: any[]; // 本页的数据
@@ -57,11 +60,10 @@ export interface ColumnItem {
   defaultSortOrder?: SortType;
   width?: string;
   render?: CellRender;
+  headerRender?: CellRender;
   sorter?: SortFn;
   children?: ColumnItem[];
   mergeRow?: boolean;
 }
 
-export type RowSummaryCol = ColumnItem & {
-  totalData?: any; // 行列总计
-};
+export type RowSummaryCol = ColumnItem & {};

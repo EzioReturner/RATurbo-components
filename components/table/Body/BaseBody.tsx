@@ -3,12 +3,17 @@ import classnames from 'classnames';
 import BodyContext from '../context/BodyContext';
 import RowSummary from '../Summary/RowSummary';
 import IndexCol from '../IndexColumn';
-import GenerateGroup from '../Component/GenerateGroup';
-import ColumnHeader from '../CellColumn/ColumnHeader';
+import GenerateGroup from '../Components/GenerateGroup';
 import CellColumn from '../CellColumn';
 import { ColumnItem } from '../interface';
 import { debounce } from '../utils/debounce';
 import ColSummaryCell from '../Summary/ColSummaryCell';
+
+const ColumnHeader = CellColumn.Header;
+
+/**
+ * @name 表格body区域，集成事件与渲染
+ */
 
 type DirectionProps = 'right' | 'left' | 'up' | 'down';
 
@@ -53,11 +58,16 @@ const BaseBody: React.FC = () => {
           node.style.overflowX = 'hidden';
         }
 
+        let canScrollWidth = headerFlowRef.current.scrollWidth - headerFlowRef.current.clientWidth;
+
+        if (canScrollWidth === 0) {
+          node.style.overflowX = 'hidden';
+        } else {
+          node.style.overflowX = 'auto';
+        }
+
         node.addEventListener('scroll', e => {
           if (headerFlowRef.current) {
-            const canScrollWidth =
-              headerFlowRef.current.scrollWidth - headerFlowRef.current.clientWidth;
-
             /**
              * @todo 此处需要优化鼠标拖动滚动条到右侧顶部时会触发回弹
              */
@@ -79,7 +89,9 @@ const BaseBody: React.FC = () => {
                   `.${prefixCls}-columns-group.${prefixCls}-mark-fixed-group`,
                 ) || [];
               for (let i = 0; i < cellFixedGroup.length; i++) {
-                const cellChild = cellFixedGroup[i].querySelector(`.${prefixCls}-column-group`);
+                const cellChild = cellFixedGroup[i].querySelector(
+                  `.${prefixCls}-group-content-column`,
+                );
                 cellChild && (cellChild.scrollTop = node.scrollTop);
               }
             }
@@ -146,14 +158,15 @@ const BaseBody: React.FC = () => {
                   `.${prefixCls}-columns-group.${prefixCls}-mark-fixed-group`,
                 ) || [];
               for (let i = 0; i < cellFixedGroup.length; i++) {
-                const cellChild = cellFixedGroup[i].querySelector(`.${prefixCls}-column-group`);
+                const cellChild = cellFixedGroup[i].querySelector(
+                  `.${prefixCls}-group-content-column`,
+                );
                 cellChild && (cellChild.scrollTop = node.scrollTop);
               }
             }
           } else {
             // 存在垂直滚动条时，锁定cell与header的滚动值同步
-            const canScrollWidth =
-              headerFlowRef.current.scrollWidth - headerFlowRef.current.clientWidth;
+            canScrollWidth = headerFlowRef.current.scrollWidth - headerFlowRef.current.clientWidth;
 
             if (delta > 0 && headerFlowRef.current.scrollLeft + delta >= canScrollWidth) {
               node.scrollLeft = canScrollWidth;
@@ -188,8 +201,6 @@ const BaseBody: React.FC = () => {
           Math.ceil(Number(headerWidth.replace(/(px)|%/g, '')))
             ? cellWidth
             : headerWidth;
-
-        // console.log(cellWidth, headerWidth, width);
 
         headerElement.style.width = width;
         cellElement.style.width = width;
@@ -408,7 +419,7 @@ const BaseBody: React.FC = () => {
               left: `${baseLeftWidth}px`,
               height: `${node.clientHeight}px`,
             });
-            const cellChild = cellFixedGroup[i].querySelector(`.${prefixCls}-column-group`);
+            const cellChild = cellFixedGroup[i].querySelector(`.${prefixCls}-group-content-column`);
             cellChild &&
               Object.assign(cellChild.style, {
                 overflow: 'hidden',
@@ -439,7 +450,8 @@ const BaseBody: React.FC = () => {
           if (cellFixedGroup[i]) {
             cellFixedGroup[i].style.position = 'static';
             cellFixedGroup[i].style.height = 'auto';
-            const cellChild = cellFixedGroup[i].querySelector(`.${prefixCls}-column-group`);
+            const cellChild = cellFixedGroup[i].querySelector(`.${prefixCls}-group-content-column`);
+
             cellChild &&
               Object.assign(cellChild.style, {
                 overflow: 'unset',
@@ -501,8 +513,8 @@ const BaseBody: React.FC = () => {
           area="header"
           columnsData={headerLeafs}
           contentRender={column => <ColumnHeader column={column} />}
+          extraColumn={rowSummaryCol && <RowSummary.Header ref={rowSummaryHeaderRef} />}
         />
-        {rowSummaryCol && <RowSummary.Header ref={rowSummaryHeaderRef} />}
       </div>
       <div className={`${prefixCls}-cell-flow`} id={`${prefixCls}-cell-flow`} ref={cellFlowRef}>
         {showIndex && <IndexCol ref={indexCellRef} />}
@@ -517,8 +529,9 @@ const BaseBody: React.FC = () => {
               extraCell={<ColSummaryCell column={column} />}
             />
           )}
+          extraColumn={rowSummaryCol && <RowSummary hideTitle ref={rowSummaryCellRef} />}
         />
-        {rowSummaryCol && <RowSummary hideTitle ref={rowSummaryCellRef} />}
+        {}
       </div>
     </div>
   );

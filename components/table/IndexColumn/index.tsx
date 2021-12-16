@@ -3,9 +3,10 @@ import CellColumn from '../CellColumn';
 import BodyContext from '../context/BodyContext';
 import ColSummaryCell from '../Summary/ColSummaryCell';
 import ColumnHeader from '../CellColumn/ColumnHeader';
-import GenerateGroup from '../Component/GenerateGroup';
+import GenerateGroup from '../Components/GenerateGroup';
+import { ColumnItem } from '../interface';
 
-const IndexHeader = forwardRef<any, { column?: StoreKeyValue }>((props, ref) => {
+const IndexHeader = forwardRef<any, { column?: ColumnItem }>((props, ref) => {
   const { groupDeep, prefixCls } = React.useContext(BodyContext);
 
   const _column = props.column || {

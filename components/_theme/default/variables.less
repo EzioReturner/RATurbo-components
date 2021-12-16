@@ -35,34 +35,42 @@
 @color-darken: #333333;
 
 body {
-  --primary: @primary-color;
-  --primary-lighten: lighten(@primary-color, 8%);
-  --primary-lightener: lighten(@primary-color, 20%);
-  --primary-lightener-extra: lighten(@primary-color, 35%);
-  --primary-darken: darken(@primary-color, 8%);
-  --primary-1: tint(@primary-color, 90%);
-  --primary-2: tint(@primary-color, 80%);
-  --primary-5: tint(@primary-color, 20%);
-  --component-background: #fff;
-  --body-background: #f3f3f3;
-  --navigator-background: #fff;
-  --popover-background: #fff;
-  --text-color: rgba(0, 0, 0, 0.65);
-  --text-color-secondary: rgba(0, 0, 0, 0.45);
-  --heading-color: rgba(0, 0, 0, 0.85);
-  --border-color: #f2f2f2;
-  --shadow-color: rgba(189, 189, 189, 0.6);
+  --tc-primary: @primary-color;
+  --tc-primary-lighten: lighten(@primary-color, 8%);
+  --tc-primary-lightener: lighten(@primary-color, 20%);
+  --tc-primary-lightener-extra: lighten(@primary-color, 35%);
+  --tc-primary-darken: darken(@primary-color, 8%);
+  --tc-primary-1: tint(@primary-color, 90%);
+  --tc-primary-2: tint(@primary-color, 80%);
+  --tc-primary-5: tint(@primary-color, 20%);
+  --tc-component-background: #fff;
+  --tc-body-background: #f3f3f3;
+  --tc-navigator-background: #fff;
+  --tc-popover-background: #fff;
+  --tc-text-color: rgba(0, 0, 0, 0.65);
+  --tc-text-color-secondary: rgba(0, 0, 0, 0.45);
+  --tc-header-color: rgba(0, 0, 0, 0.85);
+  --tc-border-color: #f2f2f2;
+  --tc-shadow-color: rgba(189, 189, 189, 0.6);
+  --tc-error:@error-color;
+  --tc-error-lighten: lighten(@error-color, 8%);
+  --tc-error-lightener: lighten(@error-color, 20%);
+  --tc-error-lightener-extra: lighten(@error-color, 35%);
+  --tc-error-darken: darken(@error-color, 8%);
+  --tc-error-1: tint(@error-color, 90%);
+  --tc-error-2: tint(@error-color, 80%);
+  --tc-error-5: tint(@error-color, 20%);
 
   &.darkTheme {
-    --text-color: rgba(255, 255, 255, 0.65);
-    --text-color-secondary: rgba(255, 255, 255, 0.45);
-    --heading-color: rgba(255, 255, 255, 0.85);
-    --body-background: #0c0c0c;
-    --navigator-background: #222;
-    --popover-background: #2a2a2a;
-    --component-background: #1d1d1d;
-    --border-color: #434343;
-    --shadow-color: rgba(0, 0, 0, 0.45);
+    --tc-text-color: rgba(255, 255, 255, 0.65);
+    --tc-text-color-secondary: rgba(255, 255, 255, 0.45);
+    --tc-header-color: rgba(255, 255, 255, 0.85);
+    --tc-body-background: #0c0c0c;
+    --tc-navigator-background: #222;
+    --tc-popover-background: #2a2a2a;
+    --tc-component-background: #1d1d1d;
+    --tc-border-color: #434343;
+    --tc-shadow-color: rgba(0, 0, 0, 0.45);
   }
 }
 

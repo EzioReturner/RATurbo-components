@@ -16,6 +16,7 @@ const Drawer: React.FC<TcDrawerProps> = props => {
     direction,
     targetContainer,
     maskClosable,
+    forceRender,
   } = props;
 
   const drawerRef = useRef<any>(null);
@@ -74,7 +75,7 @@ const Drawer: React.FC<TcDrawerProps> = props => {
     </div>
   );
 
-  if (drawerRef.current || open) {
+  if (drawerRef.current || open || forceRender) {
     portal =
       targetContainer === false
         ? DrawerDom

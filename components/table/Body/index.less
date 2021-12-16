@@ -1,0 +1,33 @@
+@popupPrefix: tc-table;
+
+.@{popupPrefix}-flow-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: auto;
+  flex-flow: column nowrap;
+  width: 100%;
+  overflow: hidden;
+
+  .@{popupPrefix}-header-flow {
+    display: flex;
+    flex-flow: row nowrap;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .@{popupPrefix}-cell-flow {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: auto;
+  }
+
+  &.@{popupPrefix}-flow-group-deep-zero {
+    // .@{popupPrefix}-rowSummary-headers {
+    //   .@{popupPrefix}-col-header {
+    //     border-right: 0;
+    //     border-left: 1px solid #eaeaea;
+    //   }
+    // }
+  }
+}

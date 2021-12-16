@@ -34,6 +34,10 @@ import FixedAll from 'raturbo-components/lib/table/__demo__/fixedAll';
 import FixedAllCode from '!raw-loader!raturbo-components/lib/table/__demo__/fixedAll';
 import CustomCell from 'raturbo-components/lib/table/__demo__/customCell';
 import CustomCellCode from '!raw-loader!raturbo-components/lib/table/__demo__/customCell';
+import Zebra from 'raturbo-components/lib/table/__demo__/zebra';
+import ZebraCode from '!raw-loader!raturbo-components/lib/table/__demo__/zebra';
+import Bordered from 'raturbo-components/lib/table/__demo__/bordered';
+import BorderedCode from '!raw-loader!raturbo-components/lib/table/__demo__/bordered';
 
 展示行列数据
 
@@ -41,35 +45,27 @@ import CustomCellCode from '!raw-loader!raturbo-components/lib/table/__demo__/cu
 
 指定表格的数据源 `dataSource` 为一个数组
 ```javascript
-const dataSource = {
-  [
-    ['ezio', 18],
-    ['mary', 20]
-  ]
-};
+const dataSource = [
+  ['ezio', 18],
+  ['mary', 20]
+];
 
-const columns = {
-  [
-    { title: 'name', dataIndex: 0, id: '1' },
-    { title: 'age', dataIndex: 1, id: '2' }
-  ]
-};
+const columns = [
+  { title: 'name', dataIndex: 0, id: '1' },
+  { title: 'age', dataIndex: 1, id: '2' }
+];
 
 // or
 
-const dataSource1 = {
-  [
-    {name: 'ezio', age: 18},
-    {name: 'mary', age: 16}
-  ]
-};
+const dataSource1 = [
+  {name: 'ezio', age: 18},
+  {name: 'mary', age: 16}
+]
 
-const columns1 = {
-  [
-    { title: 'name', dataKey: 'name', id: '1' },
-    { title: 'age', dataKey: 'age', id: '2' }
-  ]
-};
+const columns1 = [
+  { title: 'name', dataKey: 'name', id: '1' },
+  { title: 'age', dataKey: 'age', id: '2' }
+]
 ```
 
 ## 代码演示
@@ -85,9 +81,9 @@ const columns1 = {
 <CodeBox code={SortCode} title="排序" description="对某列进行排序，通过指定列的 `sorter` 函数即可启动排序按钮， 
 `sorter: function(rowA, rowB) { ... }`， rowA、rowB 为比较的两个行数据，使用 `defaultSortOrder` 属性，设置列的默认排序顺序。">
   <Sort></Sort>
-</CodeBox>
+</CodeBox> 
 
-<CodeBox code={SortCode} title="表格大小" description="通过控制 `size` 入参调整 table 大小">
+<CodeBox code={SizeCode} title="表格大小" description="通过控制 `size` 入参调整 table 大小">
   <Size></Size>
 </CodeBox>
 
@@ -98,6 +94,18 @@ const columns1 = {
 <CodeBox code={PaginationCode} title="数据分页" description="表格的分页设置。">
   <Pagination></Pagination>
 </CodeBox>
+
+<CodeBox code={ZebraCode} title="斑马纹" description="通过设置 `zebraStripe` 设置斑马纹">
+  <Zebra></Zebra>
+</CodeBox> 
+
+<CodeBox code={BorderedCode} title="边框模式" description="通过设置 `bordered` 设置边框模式">
+  <Bordered></Bordered>
+</CodeBox> 
+
+<CodeBox code={GroupCode} title="表头分组" description="`columns[n]` 可以内嵌 `children`，以渲染分组表头。">
+  <Group></Group>
+</CodeBox>  
 
 <CodeBox code={FixedCode} title="固定列" description="对于列数很多的数据，可以固定前后的列，横向滚动查看其它数据，通过设置 `fixedSize` 控制">
   <Fixed></Fixed>
@@ -111,21 +119,17 @@ const columns1 = {
   <FixedAll></FixedAll>
 </CodeBox>
 
-<CodeBox code={GroupCode} title="表头分组" description="`columns[n]` 可以内嵌 `children`，以渲染分组表头。">
-  <Group></Group>
-</CodeBox>
-
 <CodeBox code={SummaryCode} title="总结栏" description="通过设置 `colSummaryData` 设置列总结数据，通过 `rowSummaryCol` 配置额外行总结">
   <Summary></Summary>
 </CodeBox>
 
 <CodeBox code={MergeCode} title="列单元格合并" description="通过设置 `mergeRow` 设置列单元格合并">
   <Merge></Merge>
-</CodeBox>
+</CodeBox> 
 
 <CodeBox code={CustomCellCode} title="自定义单元格" description="设置 `column.render` 渲染自定义单元格，通过 `data.cellType` 区分表头与数据单元格，`customGroupHeader` 用于渲染所有表头分组 group title">
   <CustomCell></CustomCell>
-</CodeBox>
+</CodeBox> 
 
 ## API
 
@@ -145,6 +149,8 @@ const columns1 = {
 | colSummaryData | 列总结数据 | object[] | 否 | - |
 | pagination | 分页器 | 参考 [pagination](/components/pagination) 文档，为空则不显示分页 | 否 | - |
 | rowSummaryCol | 行总结数据列，具体项见下表 | RowSummaryCol[] | 否 | - |
+| zebraStripe | 斑马纹模式 | boolean | 否 | - |
+| bordered | 边框模式 | boolean | 否 | - |
 
 ### Column
 | 属性 | 说明 | 类型 | 是否必须 | 默认值 |

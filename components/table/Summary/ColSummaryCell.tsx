@@ -4,11 +4,10 @@ import BodyContext from '../context/BodyContext';
 import { ColumnItem } from '../interface';
 
 const ColSummaryCell: React.FC<{
-  value?: any;
   className?: string;
   column: ColumnItem;
 }> = props => {
-  const { value, className, column } = props;
+  const { className, column } = props;
 
   const { dataKey } = column;
 
@@ -20,21 +19,10 @@ const ColSummaryCell: React.FC<{
 
   return (
     <div
-      className={classnames(`${prefixCls}-summary-cell summary-background-color`, className)}
+      className={classnames(`${prefixCls}-summary-cell ${prefixCls}-data-cell`, className)}
       style={{ textAlign: column?.align }}
     >
-      {value ||
-        //   ($_groupIndex === 0 ? (
-        //     <div
-        //       style={{
-        //         width: '100%',
-        //         textAlign: 'center',
-        //       }}
-        //     >
-        //       总计
-        //     </div>
-        // ) :
-        colSummaryData[dataKey as string]}
+      {colSummaryData[dataKey as string]}
     </div>
   );
 };

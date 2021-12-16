@@ -2,13 +2,14 @@ import React, { useContext, useCallback, useMemo } from 'react';
 import classnames from 'classnames';
 import { getDocument } from 'raturbo-components/lib/_utils/global';
 import BodyContext from '../context/BodyContext';
+import { ColumnItem, CellRenderProps } from '../interface';
 
 /**
- * @name 通用数据列
+ * @name 表格数据区域
  */
 
 interface DataColumnProps {
-  column: StoreKeyValue;
+  column: ColumnItem;
   slicedData?: any[];
 }
 
@@ -25,84 +26,66 @@ const DataColumn: React.FC<DataColumnProps> = props => {
 
   const measurekey = dataKey || colIndex;
 
-  const measureCellRef = useCallback(
-    (ref: HTMLDivElement | null, index: number) => {
-      const now = _slicedData[index];
-      const prev = _slicedData[index - 1];
+  // 对合并的单元格进行class标记，并区分starter 和 ender
+  const patchMatchGroup = useCallback(
+    (matchGroup: any[]) => {
+      const prevEle = matchGroup[0].previousElementSibling;
 
-      const asyncMeasure = async () => {
-        let _mergeRow = false;
+      if (prevEle) {
+        prevEle.className.indexOf(`${prefixCls}-data-cell-merge-starter`) < 0 &&
+          (prevEle.className = `${prevEle.className} ${prefixCls}-data-cell-merge-starter`);
+      }
 
-        if (index > 0 && mergeRow) {
-          await new Promise(resolve =>
-            setTimeout(() => {
-              resolve(1);
-            }, 0),
-          ).then(() => {
-            if (prev[measurekey] === now[measurekey]) {
-              const _document = getDocument();
-
-              if (_document) {
-                const prevCol = _document.getElementById(`${prefixCls}-data-col-${colIndex - 1}`);
-
-                if (prevCol) {
-                  const prevCell = prevCol.querySelector(`#${prefixCls}-data-cell-${index}`);
-
-                  if (prevCell && prevCell.className.indexOf(`${prefixCls}-data-cell-merge`) > 0) {
-                    _mergeRow = true;
-                  }
-                } else {
-                  _mergeRow = true;
-                }
-              }
-            }
-          });
-        }
-
-        const findLastNoMergeCell = (element: any): any => {
-          if (element.previousElementSibling) {
-            if (
-              element.previousElementSibling.className.indexOf(`${prefixCls}-data-cell-merge`) < 0
-            ) {
-              return element.previousElementSibling;
-            }
-            return findLastNoMergeCell(element.previousElementSibling);
-          }
-          return null;
-        };
-
-        if (ref) {
-          if (_mergeRow) {
-            const ele = findLastNoMergeCell(ref);
-
-            ref.className.indexOf(`${prefixCls}-data-cell-merge`) < 0 &&
-              (ref.className = `${ref.className} ${prefixCls}-data-cell-merge`);
-
-            ele && (ref.style.backgroundColor = getComputedStyle(ele).backgroundColor);
-
-            setTimeout(() => {
-              if (
-                ref.nextElementSibling &&
-                ref.nextElementSibling.className.indexOf(`${prefixCls}-data-cell-merge`) < 0 &&
-                getComputedStyle(ref.nextElementSibling).backgroundColor ===
-                  ref.style.backgroundColor
-              ) {
-                ref.style.borderBottom = '1px solid #f3f3f3';
-              } else {
-                ref.style.borderBottom = '';
-              }
-            }, 0);
-          } else {
-            ref.style.borderBottom = '';
-            ref.style.backgroundColor = '';
-            ref.className = ref.className.replace(`${prefixCls}-data-cell-merge`, '').trim();
-          }
-        }
-      };
-
-      asyncMeasure();
+      for (let i = 0; i < matchGroup.length; i++) {
+        const element = matchGroup[i];
+        element.className = `${element.className} ${prefixCls}-data-cell-merged ${
+          i === matchGroup.length - 1 ? `${prefixCls}-data-cell-merge-ender` : ''
+        }`.trim();
+      }
     },
-    [mergeRow, _slicedData, measurekey],
+    [prefixCls],
+  );
+
+  const measureColRef = useCallback(
+    async (ref: HTMLDivElement | null) => {
+      if (ref && mergeRow) {
+        const childList = ref.childNodes;
+        let matchValue = '';
+
+        let matchGroup = [];
+
+        for (let i = 0; i < childList.length; i++) {
+          const child = childList[i] as any;
+
+          child.className = child.className
+            .split(' ')
+            .filter(
+              (cn: string) =>
+                ![
+                  `${prefixCls}-data-cell-merged`,
+                  `${prefixCls}-data-cell-merge-starter`,
+                  `${prefixCls}-last-data-cell-merged`,
+                ].includes(cn),
+            )
+            .join(' ');
+
+          // 找到数据相同的相邻单元格
+          if (_slicedData[i][measurekey] === matchValue) {
+            matchGroup.push(child);
+          } else {
+            matchGroup.length > 0 && patchMatchGroup(matchGroup);
+            matchGroup = [];
+          }
+
+          matchValue = _slicedData[i][measurekey];
+
+          if (i === childList.length - 1 && matchGroup.length > 0) {
+            patchMatchGroup(matchGroup);
+          }
+        }
+      }
+    },
+    [mergeRow, _slicedData, measurekey, patchMatchGroup],
   );
 
   const ColRender = useCallback(
@@ -111,6 +94,7 @@ const DataColumn: React.FC<DataColumnProps> = props => {
         className={`${prefixCls}-data-col`}
         key={colTitle}
         id={colIndex ? `${prefixCls}-data-col-${colIndex}` : undefined}
+        ref={ref => measureColRef(ref)}
       >
         {_slicedData.map((td, index) => {
           const CellNode = (text?: string | number | React.ReactNode) => (
@@ -124,17 +108,16 @@ const DataColumn: React.FC<DataColumnProps> = props => {
               className={classnames(`${prefixCls}-data-cell`)}
               id={`${prefixCls}-data-cell-${index}`}
               key={index}
-              ref={ref => measureCellRef(ref, index)}
             >
               {(renderCell &&
                 renderCell(
                   {
                     ...restInfo,
-                    cellType: 'data',
+                    cellData: td[measurekey],
                     rowData: td,
                     rowIndex: index,
                     pageData: _slicedData,
-                  },
+                  } as CellRenderProps,
                   CellNode,
                 )) ||
                 CellNode()}
@@ -143,7 +126,7 @@ const DataColumn: React.FC<DataColumnProps> = props => {
         })}
       </div>
     ),
-    [restInfo, _slicedData, colAlign, colIndex, measurekey, colTitle, measureCellRef, renderCell],
+    [restInfo, _slicedData, colAlign, colIndex, measurekey, colTitle, renderCell],
   );
 
   return <>{useMemo(() => ColRender(), [ColRender])}</>;

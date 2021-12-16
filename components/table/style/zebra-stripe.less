@@ -1,0 +1,41 @@
+@popupPrefix: tc-table;
+
+.@{popupPrefix}-zebra-stripe {
+  .@{popupPrefix}-data-cell.@{popupPrefix}-header-cell {
+    background-color: #f2f3f6;
+
+    &.with-sorter {
+      &:hover {
+        background-color: darken(#f2f3f6, 2%);
+      }
+    }
+  }
+
+  .@{popupPrefix}-even-row {
+    .@{popupPrefix}-cell-flow .@{popupPrefix}-data-cell {
+      &:nth-child(odd) {
+        background-color: #fff;
+      }
+
+      &:nth-child(even) {
+        background-color: #fafafa;
+      }
+    }
+  }
+
+  .@{popupPrefix}-odd-row {
+    .@{popupPrefix}-cell-flow .@{popupPrefix}-data-cell {
+      &:nth-child(even) {
+        background-color: #fff;
+      }
+
+      &:nth-child(odd) {
+        background-color: #fafafa;
+      }
+    }
+  }
+
+  .@{popupPrefix}-summary-cell {
+    background-color: #f2f3f6;
+  }
+}

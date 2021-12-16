@@ -18,7 +18,7 @@ const SORT_INDEX: StoreKeyValue = {
 };
 
 const LKTableHoc: React.FC<LKTable & LKTablePro> = props => {
-  const { dataSource, pagination, size, fixedHeader, columns } = props;
+  const { dataSource, pagination, size, fixedHeader, columns, zebraStripe, bordered } = props;
 
   const [sortArr, setSortArr] = useState<{ key: SortType; fn: SortFn }[]>([]);
 
@@ -182,7 +182,7 @@ const LKTableHoc: React.FC<LKTable & LKTablePro> = props => {
       : handleSortData(sortArr, cloneDeep(dataSource));
 
     let _page = 1;
-    let _pageSize = 10;
+    let _pageSize = orderedData.length;
 
     if (pagination) {
       _page = pagination.current;
@@ -221,8 +221,10 @@ const LKTableHoc: React.FC<LKTable & LKTablePro> = props => {
       <div
         className={classnames(
           prefixCls,
-          `${prefixCls}-size-${size || 'mini'}`,
+          `${prefixCls}-size-${size || 'middle'}`,
           fixedHeader && `${prefixCls}-fixed-header`,
+          zebraStripe && `${prefixCls}-zebra-stripe`,
+          bordered && `${prefixCls}-bordered`,
         )}
       >
         <Wrapper />
