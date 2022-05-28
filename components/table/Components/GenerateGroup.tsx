@@ -19,10 +19,27 @@ interface GenerateGroupProps {
 const GenerateGroup = forwardRef<any, GenerateGroupProps>((props, ref) => {
   const { columnsData, contentRender, area, extraColumn } = props;
 
-  const { fixedSize, customGroupHeader, prefixCls } = React.useContext(BodyContext);
+  const { fixedSize, prefixCls } = React.useContext(BodyContext);
 
   const ColumnsGroup = React.useCallback(
     (data: ColumnItem[]) => {
+      // 创建组合row
+      function GroupRow(children: any[], parentIsLast: boolean, groupIndex: number) {
+        return (
+          <div
+            className={classnames(
+              `${prefixCls}-group-content-row`,
+              parentIsLast && `${prefixCls}-last-group-content-row`,
+            )}
+          >
+            {children.map((_cl, _index) => {
+              const _lastItem = parentIsLast && _index === children.length - 1;
+              return GroupColumn(_cl, _lastItem, groupIndex);
+            })}
+          </div>
+        );
+      }
+
       // 创建组合column
       function GroupColumn(child: any, _lastItem: boolean, groupIndex: number) {
         return (
@@ -43,23 +60,6 @@ const GenerateGroup = forwardRef<any, GenerateGroupProps>((props, ref) => {
                 {contentRender(child)}
               </ContentAreaHoc>
             )}
-          </div>
-        );
-      }
-
-      // 创建组合row
-      function GroupRow(children: any[], parentIsLast: boolean, groupIndex: number) {
-        return (
-          <div
-            className={classnames(
-              `${prefixCls}-group-content-row`,
-              parentIsLast && `${prefixCls}-last-group-content-row`,
-            )}
-          >
-            {children.map((_cl, _index) => {
-              const _lastItem = parentIsLast && _index === children.length - 1;
-              return GroupColumn(_cl, _lastItem, groupIndex);
-            })}
           </div>
         );
       }
@@ -94,7 +94,7 @@ const GenerateGroup = forwardRef<any, GenerateGroupProps>((props, ref) => {
 
       return data.length > 0 ? ColumnsContainerV2(data) : null;
     },
-    [customGroupHeader, fixedSize, contentRender, ref, area],
+    [fixedSize, contentRender, ref, area, extraColumn, prefixCls],
   );
 
   return <>{React.useMemo(() => ColumnsGroup(columnsData), [ColumnsGroup, columnsData])}</>;

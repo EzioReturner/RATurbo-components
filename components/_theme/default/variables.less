@@ -1,48 +1,29 @@
-@primary-color: #536ec2; // 全局主色调
-@disabled-color: rgba(0, 0, 0, 0.25); // 失效色
-@border-color: #f2f2f2;
-@success-color: #00ce68;
-@warning-color: #ffaf00;
-@error-color: #e65251;
-@processing-color: #308ee0;
-@text-color: rgba(0,0,0,0.45);
-@text-color-secondary: rgba(0,0,0,0.65);
-
-@spacing-mini: 4px;
-@spacing-small: 8px;
-@spacing-normal: 12px;
-@spacing-middle: 16px;
-@spacing-large: 24px;
-@spacing-huge: 36px;
-
-@white-color: #ffffff;
-@white-color-darken: #f3f3f3;
-@white-color-darken-extra: darken(@white-color-darken, 6.5%);
-
-@black-color: #000000;
-@gray-color: fade(@black-color, 33.5%);
-@gray-color-lighten: #e8e8e8;
-
-@layout-menu-width: 255px;
-@layout-menu-collapsed-width: 80px;
-@layout-padding: 16px;
-@layout-header-height: 60px;
-@layout-content-max-width: 1250px;
-
-@color-lightener: #cccccc;
-@color-lighten: #999999;
-@color-normal: #666666;
-@color-darken: #333333;
-
-body {
-  --tc-primary: @primary-color;
-  --tc-primary-lighten: lighten(@primary-color, 8%);
-  --tc-primary-lightener: lighten(@primary-color, 20%);
-  --tc-primary-lightener-extra: lighten(@primary-color, 35%);
-  --tc-primary-darken: darken(@primary-color, 8%);
-  --tc-primary-1: tint(@primary-color, 90%);
-  --tc-primary-2: tint(@primary-color, 80%);
-  --tc-primary-5: tint(@primary-color, 20%);
+html {
+  --tc-primary: #536ec2;
+  --tc-primary-lighten: lighten(#536ec2, 8%);
+  --tc-primary-lightener: lighten(#536ec2, 20%);
+  --tc-primary-lightener-extra: lighten(#536ec2, 35%);
+  --tc-primary-darken: darken(#536ec2, 8%);
+  --tc-primary-1: tint(#536ec2, 90%);
+  --tc-primary-2: tint(#536ec2, 80%);
+  --tc-primary-5: tint(#536ec2, 20%);
+  --tc-darken-color: #333;
+  --tc-gray-color: #999;
+  --tc-success-color: #00ce68;
+  --tc-warning-color: #ffaf00;
+  --tc-error-color: #e65251;
+  --tc-processing-color: #308ee0;
+  --tc-spacing-mini: 4px;
+  --tc-spacing-small: 8px;
+  --tc-spacing-normal: 12px;
+  --tc-spacing-middle: 16px;
+  --tc-spacing-large: 24px;
+  --tc-spacing-huge: 36px;
+  --tc-layout-menu-width: 255px;
+  --tc-layout-menu-collapsed-width: 80px;
+  --tc-layout-padding: 24px;
+  --tc-layout-header-height: 60px;
+  --tc-layout-content-max-width: 1250px;
   --tc-component-background: #fff;
   --tc-body-background: #f3f3f3;
   --tc-navigator-background: #fff;
@@ -52,14 +33,7 @@ body {
   --tc-header-color: rgba(0, 0, 0, 0.85);
   --tc-border-color: #f2f2f2;
   --tc-shadow-color: rgba(189, 189, 189, 0.6);
-  --tc-error:@error-color;
-  --tc-error-lighten: lighten(@error-color, 8%);
-  --tc-error-lightener: lighten(@error-color, 20%);
-  --tc-error-lightener-extra: lighten(@error-color, 35%);
-  --tc-error-darken: darken(@error-color, 8%);
-  --tc-error-1: tint(@error-color, 90%);
-  --tc-error-2: tint(@error-color, 80%);
-  --tc-error-5: tint(@error-color, 20%);
+  --tc-disabled-color: rgba(0, 0, 0, 0.25); // 失效色
 
   &.darkTheme {
     --tc-text-color: rgba(255, 255, 255, 0.65);

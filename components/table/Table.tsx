@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import LKPagination from 'raturbo-components/lib/pagination';
 import classnames from 'classnames';
 import cloneDeep from 'lodash/cloneDeep';
@@ -30,11 +30,20 @@ const LKTableHoc: React.FC<LKTable & LKTablePro> = props => {
     }
   };
 
+  // 整个生命周期不变的id
+  const uniqId = useMemo(
+    () =>
+      Math.random()
+        .toString(36)
+        .substring(2, 6),
+    [],
+  );
+
   const findHeaderDeep = useCallback((data: StoreKeyValue) => {
     let deep = 0;
 
     const recursiveFuc = (_data: StoreKeyValue) => {
-      if (_data.children) {
+      if (_data?.children) {
         deep++;
         recursiveFuc(_data.children[0]);
       }
@@ -52,7 +61,7 @@ const LKTableHoc: React.FC<LKTable & LKTablePro> = props => {
     const recursiveFuc = (_data: StoreKeyValue[]) => {
       for (let i = 0; i < _data.length; i++) {
         const element = _data[i];
-        if (!element.children) {
+        if (!element?.children) {
           element.$_groupIndex = $_groupIndex;
           arr.push(element);
           $_groupIndex++;
@@ -177,9 +186,15 @@ const LKTableHoc: React.FC<LKTable & LKTablePro> = props => {
   const BodyContextValues = React.useMemo(() => {
     const { cells, headers } = allLeaf();
 
-    const orderedData = sortArr.some(sa => sa.key === 'none')
-      ? dataSource
-      : handleSortData(sortArr, cloneDeep(dataSource));
+    let orderedData: any[] = [];
+
+    if (Array.isArray(dataSource)) {
+      orderedData = sortArr.some(sa => sa.key === 'none')
+        ? dataSource
+        : handleSortData(sortArr, cloneDeep(dataSource));
+    } else {
+      console.error('[dataSource] not array');
+    }
 
     let _page = 1;
     let _pageSize = orderedData.length;
@@ -212,12 +227,12 @@ const LKTableHoc: React.FC<LKTable & LKTablePro> = props => {
       autoFillGroup: true,
       renderId: Math.random()
         .toString(36)
-        .substr(2),
+        .substring(2),
     };
   }, [props, dataSource, handleChangeSort, sortArr, pagination, columns, findHeaderDeep, allLeaf]);
 
   return (
-    <BodyContext.Provider value={BodyContextValues}>
+    <BodyContext.Provider value={{ ...BodyContextValues, uniqId }}>
       <div
         className={classnames(
           prefixCls,

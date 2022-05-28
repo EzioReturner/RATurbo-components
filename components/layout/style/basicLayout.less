@@ -3,6 +3,8 @@
 
 @popupPrefix: tc-layout;
 
+@popupPrefixHeader: tc-header;
+
 .@{popupPrefix}-basicLayout {
   position: relative;
   display: flex;
@@ -16,6 +18,14 @@
     .@{popupPrefix}-basicLayout-wrapper {
       padding-left: 0 !important;
     }
+
+    .@{popupPrefixHeader}-fixHeader.@{popupPrefixHeader}-splitLayout.@{popupPrefixHeader}-vertical {
+      width: 100%;
+
+      &.@{popupPrefixHeader}-collapsed {
+        width: 100%;
+      }
+    }
   }
 
   &.@{popupPrefix}-basicLayout-inlineMode {
@@ -25,16 +35,20 @@
       flex-direction: row;
       // padding-bottom: 28px;
     }
+
+    .@{popupPrefix}-basicLayout-inline-content {
+      width: 100%;
+    }
   }
 
   &.@{popupPrefix}-basicLayout-splitMode,
   &.@{popupPrefix}-basicLayout-inlineMode {
     &.@{popupPrefix}-basicLayout-fixSider {
       .@{popupPrefix}-basicLayout-wrapper {
-        padding-left: @layout-menu-width;
+        padding-left: var(--tc-layout-menu-width);
 
         &.@{popupPrefix}-basicLayout-wrapper-collapsed {
-          padding-left: @layout-menu-collapsed-width;
+          padding-left: var(--tc-layout-menu-collapsed-width);
         }
 
         // &.@{popupPrefix}-basicLayout-wrapper-customSiderBar {
@@ -69,54 +83,6 @@
       flex-direction: column;
     }
   }
-
-  // .@{popupPrefix}-basicLayout-wrapper-viewMain {
-  //   flex: auto;
-  //   padding: @layout-padding;
-  //   overflow-y: auto;
-  // }
-
-  // .@{popupPrefix}-basicLayout-inlineMode-footer {
-  //   position: fixed;
-  //   bottom: 0;
-  //   left: 0;
-  //   z-index: 10;
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   width: 100%;
-  //   height: 28px;
-  //   min-height: 28px;
-  //   padding-right: @spacing-large;
-  //   background-color: var(--tc-component-background);
-  //   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  //   opacity: 0.8;
-
-  //   &.@{popupPrefix}-basicLayout-inlineMode-footer-dark {
-  //     box-shadow: 0 -4px 40px 0 #000 !important;
-  //   }
-
-  //   .@{popupPrefix}-basicLayout-inlineMode-footer-icon {
-  //     position: absolute;
-  //     top: 0;
-  //     left: 0;
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //     width: @layout-menu-width;
-  //     height: 28px;
-  //     cursor: pointer;
-  //     transition: width 0.3s, color 0.3s;
-
-  //     &:hover {
-  //       color: var(--tc-primary);
-  //     }
-
-  //     &.@{popupPrefix}-basicLayout-inlineMode-footer-collapsed {
-  //       width: @layout-menu-collapsed-width;
-  //     }
-  //   }
-  // }
 }
 
 .@{popupPrefix}-basicLayout-horizontal {
@@ -125,35 +91,35 @@
   min-height: 100%;
   background-color: var(--tc-body-background);
 
+  .@{popupPrefix}-basicLayout-horizontal-wrapper {
+    padding: var(--tc-layout-padding);
+  }
+
+  .@{popupPrefix}-basicLayout-horizontal-content {
+    max-width: var(--tc-layout-content-max-width);
+    margin: 0 auto;
+  }
+
   &.@{popupPrefix}-basicLayout-horizontal-hideHeader {
     .@{popupPrefix}-basicLayout-horizontal-wrapper {
-      padding-top: @spacing-large !important;
+      padding-top: var(--tc-spacing-large);
     }
   }
 
   &.@{popupPrefix}-basicLayout-horizontal-fixHeader {
-    .@{popupPrefix}-header.@{popupPrefix}-header-horizontal {
-      position: fixed;
-    }
     .@{popupPrefix}-basicLayout-horizontal-wrapper {
-      padding-top: @layout-header-height + @spacing-large;
+      padding-top: calc(var(--tc-layout-header-height) + var(--tc-spacing-large));
     }
   }
 
   &.@{popupPrefix}-basicLayout-horizontal-contentFlow {
-    .@{popupPrefix}-header.@{popupPrefix}-header-horizontal {
-      padding-left: @spacing-large;
-    }
-  
-    .tc-layout-basicLayout-horizontal-wrapper {
-      max-width: unset !important;
+    // .@{popupPrefix}-header.@{popupPrefix}-header-horizontal {
+    //   padding-left: var(--tc-spacing-large);
+    // }
+
+    .@{popupPrefix}-basicLayout-horizontal-content {
+      max-width: unset;
       margin: 0;
     }
-  }
-
-  .@{popupPrefix}-basicLayout-horizontal-wrapper {
-    max-width: @layout-content-max-width;
-    margin: 0 auto;
-    padding: @layout-padding;
   }
 }

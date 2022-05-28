@@ -11,7 +11,7 @@ const VerticalMode: React.FC<VerticalModeProps> = props => {
 
   const { hideHeader, header: _header, sider: _sider, ...rest } = props;
 
-  const { collapsed, verticalType, isMobile, fixHeader, fixSider, hideSider } = rest;
+  const { collapsed, verticalType, mobile, fixHeader, fixSider, hideSider } = rest;
 
   const IS_INLINE_TYPE = verticalType === 'inline';
 
@@ -52,7 +52,7 @@ const VerticalMode: React.FC<VerticalModeProps> = props => {
         )}
       >
         {Sider}
-        {props.children}
+        <div className={`${prefixCls}-basicLayout-inline-content`}>{props.children}</div>
       </div>
     </>
   );
@@ -68,7 +68,7 @@ const VerticalMode: React.FC<VerticalModeProps> = props => {
         hideHeader && `${prefixCls}-basicLayout-hideHeader`,
         fixHeader && `${prefixCls}-basicLayout-fixHeader`,
         fixSider && `${prefixCls}-basicLayout-fixSider`,
-        isMobile && `${prefixCls}-basicLayout-mobile`,
+        mobile && `${prefixCls}-basicLayout-mobile`,
       )}
     >
       {IS_INLINE_TYPE ? inlineModeLayout : splitModeLayout}

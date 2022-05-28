@@ -24,7 +24,7 @@ const dataSource = [
     name: 'jim',
     age: 250,
     address: 'Sidney No. 1 Lake Park',
-    column1: 'column1',
+    column1: 'column2',
     column2: 'column2',
     column3: 'column3',
     score: 0,
@@ -34,7 +34,7 @@ const dataSource = [
     name: 'green',
     age: 2077,
     address: 'London No. 2 Lake Park',
-    column1: 'column1',
+    column1: 'column2',
     column2: 'column2',
     column3: 'column3',
   },
@@ -83,8 +83,19 @@ export default () => (
                 title: 'content0',
                 id: 'content0',
                 children: [
-                  { title: 'column1', dataKey: 'column1' },
-                  { title: 'column2', dataKey: 'column2' },
+                  {
+                    title: 'column1',
+                    dataKey: 'column1',
+                    mergeRow: true,
+                    mergeVerticalCenter: true,
+                  },
+                  {
+                    title: 'column2',
+                    dataKey: 'column2',
+                    mergeRow: true,
+                    mergeAlignPrevCol: true,
+                    mergeVerticalCenter: true,
+                  },
                   { title: 'column3', dataKey: 'column3' },
                 ],
               },
@@ -120,12 +131,7 @@ export default () => (
                     render: data => {
                       const { cellData } = data;
                       return (
-                        <a
-                          rel="noopener noreferrer"
-                          target="_blank"
-                          href="https://github.com/EzioReturner/RATurbo-components"
-                          style={color}
-                        >
+                        <a rel="noopener noreferrer" target="_blank" style={color}>
                           {cellData}
                           <span role="img" aria-label="">
                             🇨🇳
@@ -148,7 +154,12 @@ export default () => (
                 children: [
                   { title: 'column4', dataKey: 'column1' },
                   { title: 'column5', dataKey: 'column2' },
-                  { title: 'column6', dataKey: 'column3' },
+                  {
+                    title: 'column6',
+                    dataKey: 'column3',
+                    mergeRow: true,
+                    mergeVerticalCenter: true,
+                  },
                 ],
               },
               {

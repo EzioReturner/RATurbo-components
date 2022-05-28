@@ -43,7 +43,7 @@ export type CellRenderProps = ColumnItem & {
 
 export type CellRender = (
   data: CellRenderProps,
-  originNode: (text?: string | number | React.ReactNode) => React.ReactNode,
+  originNode: (text?: string | number | React.ReactNode) => React.ReactNode | Element,
 ) => React.ReactNode;
 
 export interface LeafItem extends ColumnItem {
@@ -63,7 +63,9 @@ export interface ColumnItem {
   headerRender?: CellRender;
   sorter?: SortFn;
   children?: ColumnItem[];
-  mergeRow?: boolean;
+  mergeRow?: boolean; // 行合并
+  mergeVerticalCenter?: boolean; // 行合并后居中单元格显示
+  mergeAlignPrevCol?: boolean; // 行合并后单元格与前一列对齐
 }
 
 export type RowSummaryCol = ColumnItem & {};

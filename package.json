@@ -1,6 +1,6 @@
 {
   "name": "raturbo-components",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "zhev",
   "description": "A React UI Library.",
   "license": "MIT",
@@ -29,7 +29,7 @@
   "scripts": {
     "dev": "rimraf .docz && docz dev",
     "start": "npm run dev",
-    "build:doc": "rimraf doc-site && docz build",
+    "build:doc": "rimraf public .docz node_modules/.cache && docz build",
     "preview:doc": "docz serve",
     "clean": "rimraf lib esm dist",
     "pub": "npm run clean && npm run build && npm publish",

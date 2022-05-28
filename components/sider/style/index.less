@@ -6,11 +6,11 @@
   position: relative;
   z-index: 3;
   display: flex;
-  flex: 0 0 @layout-menu-width;
+  flex: 0 0 var(--tc-layout-menu-width);
   flex-flow: column;
-  width: @layout-menu-width;
-  min-width: @layout-menu-width;
-  max-width: @layout-menu-width;
+  width: var(--tc-layout-menu-width);
+  min-width: var(--tc-layout-menu-width);
+  max-width: var(--tc-layout-menu-width);
   min-height: 100%;
   overflow: hidden;
   background-color: var(--tc-component-background);
@@ -25,16 +25,16 @@
   }
 
   &.@{popupPrefix}-navigator-collapsed {
-    flex: 0 0 @layout-menu-collapsed-width;
-    width: @layout-menu-collapsed-width;
-    min-width: @layout-menu-collapsed-width;
-    max-width: @layout-menu-collapsed-width;
+    flex: 0 0 var(--tc-layout-menu-collapsed-width);
+    width: var(--tc-layout-menu-collapsed-width);
+    min-width: var(--tc-layout-menu-collapsed-width);
+    max-width: var(--tc-layout-menu-collapsed-width);
   }
 
   &.@{popupPrefix}-inlineLayout-navigator {
     &.@{popupPrefix}-navigator-fixSider {
-      top: @layout-header-height;
-      height: calc(100vh - 88px);
+      top: var(--tc-layout-header-height);
+      height: calc(100vh - var(--tc-layout-header-height));
       min-height: unset;
     }
   }

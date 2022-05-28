@@ -1,18 +1,24 @@
 import React from 'react';
 import classNames from 'classnames';
-import { HorizontalHeaderProps } from './interface';
+import { HeaderProps } from './interface';
 
-const HorizontalHeader: React.FC<HorizontalHeaderProps> = props => {
+const HorizontalHeader: React.FC<HeaderProps> = props => {
   const prefixCls = 'tc-header';
 
-  const { isContentFlowMode, children } = props;
+  const { contentFlowMode, children, fixHeader } = props;
 
   return (
-    <header className={classNames(`${prefixCls}`, `${prefixCls}-horizontal`)}>
+    <header
+      className={classNames(
+        `${prefixCls}`,
+        `${prefixCls}-horizontal`,
+        fixHeader && `${prefixCls}-fixHeder`,
+      )}
+    >
       <div
         className={classNames(
           `${prefixCls}-container`,
-          isContentFlowMode && `${prefixCls}-container-flowMode`,
+          contentFlowMode && `${prefixCls}-container-flowMode`,
         )}
       >
         <div className={`${prefixCls}-headerNav`}>{children}</div>

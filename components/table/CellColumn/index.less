@@ -12,7 +12,7 @@
   flex-shrink: 0;
   box-sizing: border-box;
   height: 28px;
-  padding: 0 @spacing-middle;
+  padding: 0 var(--tc-spacing-middle);
   font-size: 10px;
   line-height: 28px;
   white-space: nowrap;
@@ -20,7 +20,7 @@
 }
 
 .@{popupPrefix}-header-sort {
-  margin-left: @spacing-mini;
+  margin-left: var(--tc-spacing-mini);
 
   .@{popupPrefix}-header-sort-inner {
     display: flex;
@@ -34,33 +34,33 @@
     width: 0;
     height: 5px;
     height: 0;
-    color: @color-lighten;
+    color: var(--tc-gray-color);
     font-size: 8px;
 
     &:first-child {
       margin-bottom: 1px;
     }
-    
+
     &.sort-up {
       border-right: 3px solid transparent;
-      border-bottom: 4px solid @color-lighten;
+      border-bottom: 4px solid var(--tc-gray-color);
       border-left: 3px solid transparent;
       transition: border-bottom 0.3s;
 
       &.active {
-        border-bottom-color: @color-darken;
+        border-bottom-color: var(--tc-darken-color);
       }
     }
 
     &.sort-down {
       margin-top: 2px;
-      border-top: 4px solid @color-lighten;
+      border-top: 4px solid var(--tc-gray-color);
       border-right: 3px solid transparent;
       border-left: 3px solid transparent;
       transition: border-top 0.3s;
 
       &.active {
-        border-top-color: @color-darken;
+        border-top-color: var(--tc-darken-color);
       }
     }
   }
@@ -70,6 +70,16 @@
   position: relative;
   flex: 1;
   width: auto;
+
+  &.@{popupPrefix}-cell-merged-vertical-center {
+    .@{popupPrefix}-data-cell-merged {
+      display: none;
+    }
+
+    .@{popupPrefix}-data-cell-merge-starter {
+      border-bottom: 1px solid #f0f0f0;
+    }
+  }
 }
 
 .@{popupPrefix}-data-cell {
@@ -79,7 +89,7 @@
   flex-shrink: 0;
   box-sizing: border-box;
   height: 28px;
-  padding: 0 @spacing-middle;
+  padding: 0 var(--tc-spacing-middle);
   font-size: 10px;
   line-height: 28px;
   white-space: nowrap;
@@ -90,7 +100,7 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    color: @color-darken;
+    color: var(--tc-darken-color);
     font-weight: bold;
     background-color: #fafafa;
     transition: background-color 0.3s;
@@ -110,8 +120,8 @@
       height: 1.6em;
       background-color: #0000000f;
       transform: translateY(-50%);
-      transition: background-color .3s;
-      content: "";
+      transition: background-color 0.3s;
+      content: '';
     }
   }
 
@@ -132,7 +142,7 @@
 
 .@{popupPrefix}-data-cell-merged {
   border-bottom-width: 0;
-  
+
   & > div {
     display: none;
   }

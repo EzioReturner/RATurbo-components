@@ -3,13 +3,10 @@ export interface HeaderProps {
   verticalType?: 'split' | 'inline';
   collapsed?: boolean;
   propStyle?: React.CSSProperties;
-  isMobile?: boolean;
+  mobile?: boolean;
   hideCollapsed?: boolean;
   onChangeCollapsed?: (collapsed: boolean) => void;
   headerMode?: 'vertical' | 'horizontal';
   collapseIcon?: (originNode: React.ReactNode) => React.ReactNode;
-}
-
-export interface HorizontalHeaderProps {
-  isContentFlowMode?: boolean;
+  contentFlowMode?: boolean;
 }

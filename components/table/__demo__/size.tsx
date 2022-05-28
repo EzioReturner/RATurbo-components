@@ -1,24 +1,31 @@
 import React from 'react';
 import Table from 'raturbo-components/lib/table';
 import 'raturbo-components/lib/table/style';
+import Button from 'raturbo-components/lib/button';
+import 'raturbo-components/lib/button/style';
 
 export default () => {
   const [size, setSize] = React.useState<'mini' | 'middle' | 'large'>('mini');
 
-  const style = { marginBottom: '24px' };
+  const style = { marginBottom: '24px', display: 'flex' };
 
   return (
     <section>
       <div style={style}>
-        <button type="button" onClick={() => setSize('mini')}>
+        <Button type={size === 'mini' ? 'primary' : 'default'} onClick={() => setSize('mini')}>
           mini
-        </button>
-        <button type="button" style={{ margin: '0 24px' }} onClick={() => setSize('middle')}>
-          middle
-        </button>
-        <button type="button" onClick={() => setSize('large')}>
+        </Button>
+        <div style={{ margin: '0 24px' }}>
+          <Button
+            type={size === 'middle' ? 'primary' : 'default'}
+            onClick={() => setSize('middle')}
+          >
+            middle
+          </Button>
+        </div>
+        <Button type={size === 'large' ? 'primary' : 'default'} onClick={() => setSize('large')}>
           large
-        </button>
+        </Button>
       </div>
       <Table
         size={size}

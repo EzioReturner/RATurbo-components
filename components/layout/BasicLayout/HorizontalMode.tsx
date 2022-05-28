@@ -6,7 +6,7 @@ import { HorizontalModeProps } from '../interface';
 
 // 顶部导航栏模式
 const HorizontalMode: React.FC<HorizontalModeProps> = props => {
-  const { hideHeader, fixHeader, isContentFlowMode, header: _header } = props;
+  const { hideHeader, fixHeader, contentFlowMode, header: _header } = props;
 
   const { prefixCls } = React.useContext(BasicLayoutContext);
 
@@ -16,12 +16,22 @@ const HorizontalMode: React.FC<HorizontalModeProps> = props => {
       className={classNames(
         `${prefixCls}-basicLayout-horizontal`,
         hideHeader && `${prefixCls}-basicLayout-horizontal-hideHeader`,
-        isContentFlowMode && `${prefixCls}-basicLayout-horizontal-contentFlow`,
+        contentFlowMode && `${prefixCls}-basicLayout-horizontal-contentFlow`,
         fixHeader && `${prefixCls}-basicLayout-horizontal-fixHeader`,
       )}
     >
-      {!hideHeader && <LayoutHeader headerMode="horizontal">{_header}</LayoutHeader>}
-      <div className={`${prefixCls}-basicLayout-horizontal-wrapper`}>{props.children}</div>
+      {!hideHeader && (
+        <LayoutHeader
+          contentFlowMode={contentFlowMode}
+          headerMode="horizontal"
+          fixHeader={fixHeader}
+        >
+          {_header}
+        </LayoutHeader>
+      )}
+      <div className={`${prefixCls}-basicLayout-horizontal-wrapper`}>
+        <div className={`${prefixCls}-basicLayout-horizontal-content`}>{props.children}</div>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from 'raturbo-components/lib/button';
+import 'raturbo-components/lib/button/style';
 import Drawer from '../index';
 import '../style';
 
@@ -11,17 +13,18 @@ export default () => {
 
   const _style = {
     display: 'flex',
+    alignItems: 'center',
   };
 
-  const buttonStyle = {
-    marginLeft: '18px',
+  const radioStyle = {
+    marginRight: '18px',
   };
 
   return (
     <div>
       <div style={_style}>
         {['up', 'down', 'right', 'left'].map(_d => (
-          <div key={_d}>
+          <div key={_d} style={radioStyle}>
             <input
               onChange={() => setDir(_d as D)}
               checked={_d === direct}
@@ -32,9 +35,9 @@ export default () => {
             <span>{_d}</span>
           </div>
         ))}
-        <button style={buttonStyle} type="button" onClick={() => setOpen(true)}>
+        <Button type="primary" onClick={() => setOpen(true)}>
           open
-        </button>
+        </Button>
       </div>
 
       <Drawer direction={direct} open={open} openChange={_open => setOpen(_open)}>

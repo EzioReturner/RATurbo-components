@@ -3,7 +3,7 @@ export interface LayoutProps {
   // siteLogo?: React.ReactNode;
   hideHeader?: boolean; // 显示header
   fixHeader?: boolean; // 固定header
-  isMobile?: boolean;
+  mobile?: boolean;
 }
 
 export interface HeaderProps {
@@ -15,7 +15,7 @@ export interface BasicLayoutProps extends LayoutProps {
 }
 
 export interface HorizontalModeProps extends BasicLayoutProps {
-  isContentFlowMode?: boolean; // 内容区域流式布局
+  contentFlowMode?: boolean; // 内容区域流式布局
 }
 
 export interface VerticalModeProps extends BasicLayoutProps {

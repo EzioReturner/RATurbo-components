@@ -58,7 +58,8 @@ const BaseBody: React.FC = () => {
           node.style.overflowX = 'hidden';
         }
 
-        let canScrollWidth = headerFlowRef.current.scrollWidth - headerFlowRef.current.clientWidth;
+        const canScrollWidth =
+          headerFlowRef.current.scrollWidth - headerFlowRef.current.clientWidth;
 
         if (canScrollWidth === 0) {
           node.style.overflowX = 'hidden';
@@ -166,11 +167,12 @@ const BaseBody: React.FC = () => {
             }
           } else {
             // 存在垂直滚动条时，锁定cell与header的滚动值同步
-            canScrollWidth = headerFlowRef.current.scrollWidth - headerFlowRef.current.clientWidth;
+            const _canScrollWidth =
+              headerFlowRef.current.scrollWidth - headerFlowRef.current.clientWidth;
 
-            if (delta > 0 && headerFlowRef.current.scrollLeft + delta >= canScrollWidth) {
-              node.scrollLeft = canScrollWidth;
-              headerFlowRef.current.scrollLeft = canScrollWidth;
+            if (delta > 0 && headerFlowRef.current.scrollLeft + delta >= _canScrollWidth) {
+              node.scrollLeft = _canScrollWidth;
+              headerFlowRef.current.scrollLeft = _canScrollWidth;
               return;
             }
             headerFlowRef.current.scrollLeft = node.scrollLeft + delta;
@@ -179,7 +181,7 @@ const BaseBody: React.FC = () => {
         });
       }
     },
-    [fixedSize, showIndex],
+    [fixedSize, showIndex, prefixCls],
   );
 
   const getDomWidth = (dom: HTMLElement) => {
@@ -375,7 +377,15 @@ const BaseBody: React.FC = () => {
         }
       }
     },
-    [measureDomWidth, resetWidth, rowSummaryCol, showIndex, autoFillGroup, flexGroupWidth],
+    [
+      measureDomWidth,
+      resetWidth,
+      rowSummaryCol,
+      showIndex,
+      autoFillGroup,
+      flexGroupWidth,
+      prefixCls,
+    ],
   );
 
   // 固定冻结区域的高度和定位
@@ -467,7 +477,7 @@ const BaseBody: React.FC = () => {
         node.style.marginLeft = '0';
       }
     },
-    [showIndex, fixedSize],
+    [showIndex, fixedSize, prefixCls],
   );
 
   // 对齐所有数据列与头部

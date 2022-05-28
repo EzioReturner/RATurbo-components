@@ -10,13 +10,13 @@
   align-items: center;
   box-sizing: border-box;
   width: 100%;
-  height: @layout-header-height;
+  height: var(--tc-layout-header-height);
   text-align: left;
   background: var(--tc-component-background);
   box-shadow: 4px 4px 40px 0 rgba(0, 0, 0, 0.05);
   transition: width 0.3s;
 
-  // &.@{popupPrefix}-isMobile {
+  // &.@{popupPrefix}-mobile {
   //   left: 0;
   //   width: 100% !important;
   // }
@@ -41,7 +41,6 @@
 }
 
 .@{popupPrefix}.@{popupPrefix}-vertical {
-
   &.@{popupPrefix}-inlineLayout {
     left: 0 !important;
     z-index: 4;
@@ -56,14 +55,13 @@
   }
 
   &.@{popupPrefix}-splitLayout {
-
     &.@{popupPrefix}-fixHeader {
       position: fixed;
       top: 0;
       right: 0;
-      width: calc(100% - @layout-menu-width);
+      width: calc(100% - var(--tc-layout-menu-width));
       &.@{popupPrefix}-collapsed {
-        width: calc(100% - @layout-menu-collapsed-width);
+        width: calc(100% - var(--tc-layout-menu-collapsed-width));
       }
     }
   }
@@ -72,13 +70,19 @@
 .@{popupPrefix}.@{popupPrefix}-horizontal {
   left: 0 !important;
 
+  &.@{popupPrefix}-fixHeder {
+    position: fixed;
+    top: 0;
+  }
+
   & > .@{popupPrefix}-container {
     position: relative;
     display: flex;
     flex: 1;
     width: 100%;
-    max-width: @layout-content-max-width;
-    max-height: @layout-header-height;
+    max-width: var(--tc-layout-content-max-width);
+    height: 100%;
+    max-height: var(--tc-layout-header-height);
     margin: auto;
 
     &.@{popupPrefix}-container-flowMode {

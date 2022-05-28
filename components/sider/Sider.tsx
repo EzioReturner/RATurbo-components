@@ -18,7 +18,6 @@ const Sider: React.FC<SidebarProps> = props => {
         IS_INLINE_TYPE
           ? `${prefixCls}-inlineLayout-navigator`
           : `${prefixCls}-splitLayout-navigator`,
-        // isDarkTheme && `${prefixCls}-navigator-darkTheme`
       )}
     >
       {children}

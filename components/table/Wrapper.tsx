@@ -11,7 +11,7 @@ const TableWrapper: React.FC = () => {
   // const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   // useEffect(() => {
-  // const _isMobile: any = isMobile(navigator.userAgent);
+  // const _isMobile: any = mobile(navigator.userAgent);
   // if (_isMobile.any) return;
   // const overEvent = (event: any) => {
   //   const target = event.target;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import RouterRender from '../index';
+import Button from '../index';
 
-describe('<RouterRender />', () => {
+describe('<Button />', () => {
   it('renders without error', () => {});
 });

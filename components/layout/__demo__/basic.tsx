@@ -2,6 +2,8 @@ import React from 'react';
 import Layout from '../BasicLayout';
 import './index.less';
 import '../style';
+import Button from 'raturbo-components/lib/button';
+import 'raturbo-components/lib/button/style';
 
 const buttonStyle = {
   marginRight: '12px',
@@ -19,38 +21,60 @@ export default () => {
 
   return (
     <div className="layout-demo-container">
-      <div>
-        <button type="button" style={buttonStyle} onClick={() => setMode('vertical')}>
-          vertical
-        </button>
-        <button type="button" onClick={() => setMode('horizontal')}>
-          horizontal
-        </button>
+      <div style={{ display: 'flex' }}>
+        <div style={buttonStyle}>
+          <Button
+            type={mode === 'vertical' ? 'primary' : 'default'}
+            onClick={() => setMode('vertical')}
+          >
+            vertical
+          </Button>
+        </div>
+        <div style={buttonStyle}>
+          <Button
+            type={mode === 'horizontal' ? 'primary' : 'default'}
+            onClick={() => setMode('horizontal')}
+          >
+            horizontal
+          </Button>
+        </div>
         {mode === 'vertical' && (
-          <div>
-            <button type="button" style={buttonStyle} onClick={() => setType('split')}>
-              split
-            </button>
-            <button type="button" style={buttonStyle} onClick={() => setType('inline')}>
-              inline
-            </button>
-          </div>
+          <>
+            <div style={buttonStyle}>
+              <Button
+                type={type === 'split' ? 'primary' : 'default'}
+                onClick={() => setType('split')}
+              >
+                split
+              </Button>
+            </div>
+            <div>
+              <Button
+                type={type === 'inline' ? 'primary' : 'default'}
+                onClick={() => setType('inline')}
+              >
+                inline
+              </Button>
+            </div>
+          </>
         )}
         {mode !== 'vertical' && (
-          <div>
-            <button type="button" style={buttonStyle} onClick={() => setFlowMode(true)}>
-              flowMode
-            </button>
-            <button type="button" onClick={() => setFlowMode(false)}>
+          <>
+            <div style={buttonStyle}>
+              <Button type={flowMode ? 'primary' : 'default'} onClick={() => setFlowMode(true)}>
+                flowMode
+              </Button>
+            </div>
+            <Button type={!flowMode ? 'primary' : 'default'} onClick={() => setFlowMode(false)}>
               unFlowMode
-            </button>
-          </div>
+            </Button>
+          </>
         )}
       </div>
       <Layout
         mode={mode}
         collapsed={collapsed}
-        isContentFlowMode={flowMode}
+        contentFlowMode={flowMode}
         verticalType={type}
         onChangeCollapsed={_col => setCollapsed(_col)}
         header={<div className="center-style">header</div>}

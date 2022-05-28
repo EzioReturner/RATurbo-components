@@ -12,7 +12,7 @@ const VerticalHeader: React.FC<HeaderProps> = props => {
     children,
     collapsed,
     propStyle,
-    isMobile,
+    mobile,
     hideCollapsed,
     onChangeCollapsed,
     collapseIcon: _collapseIcon,
@@ -38,7 +38,7 @@ const VerticalHeader: React.FC<HeaderProps> = props => {
           `${prefixCls}`,
           `${prefixCls}-vertical`,
           collapsed && `${prefixCls}-collapsed`,
-          isMobile && `${prefixCls}-isMobile`,
+          mobile && `${prefixCls}-mobile`,
           IS_INLINE_TYPE ? `${prefixCls}-inlineLayout` : `${prefixCls}-splitLayout`,
         )}
         style={{
@@ -54,11 +54,11 @@ const VerticalHeader: React.FC<HeaderProps> = props => {
           `${prefixCls}-fixHeader`,
           `${prefixCls}-vertical`,
           collapsed && `${prefixCls}-collapsed`,
-          isMobile && `${prefixCls}-isMobile`,
+          mobile && `${prefixCls}-mobile`,
           IS_INLINE_TYPE ? `${prefixCls}-inlineLayout` : `${prefixCls}-splitLayout`,
         )}
         style={{
-          zIndex: !fixHeader ? -1 : 4,
+          zIndex: !fixHeader ? -1 : 5,
           opacity: !fixHeader ? 0 : 1,
           ...propStyle,
         }}

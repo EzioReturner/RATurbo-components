@@ -1,15 +1,17 @@
 import React from 'react';
 import Drawer from '../index';
 import '../style';
+import Button from 'raturbo-components/lib/button';
+import 'raturbo-components/lib/button/style';
 
 export default () => {
   const [open, setOpen] = React.useState(false);
 
   return (
     <div>
-      <button type="button" onClick={() => setOpen(true)}>
+      <Button type="primary" onClick={() => setOpen(true)}>
         open
-      </button>
+      </Button>
       <Drawer direction="right" open={open} openChange={_open => setOpen(_open)}>
         <div
           style={{
